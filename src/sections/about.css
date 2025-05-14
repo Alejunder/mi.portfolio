@@ -1,0 +1,46 @@
+/* Fondo de la sección */
+.about-section {
+    min-height: 100vh;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 40px 20px;
+    box-sizing: border-box;
+  }
+  
+  /* Tarjeta tipo holograma */
+  .about-card {
+    max-width: 800px;
+    padding: 40px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 20px;
+    box-shadow: 0 0 20px rgba(0, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+  }
+  
+  /* Título con Orbitron */
+  .about-title {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 36px;
+    color: cyan;
+    text-align: center;
+    margin-bottom: 20px;
+    letter-spacing: 1px;
+  }
+  
+  /* Texto con Raleway */
+  .about-text {
+    font-family: 'Raleway', sans-serif;
+    font-size: 18px;
+    color: #ccc;
+    line-height: 1.7;
+    text-align: justify;
+  }
+
+  .about-tilt-wrapper {
+    will-change: transform;
+  }
+  
+  

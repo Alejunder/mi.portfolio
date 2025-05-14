@@ -1,0 +1,132 @@
+/* Estilos base (Desktop) */
+.project-btn-futuristic {
+    display: inline-block;
+    margin-top: 1.5rem;
+    padding: 0.75rem 1.5rem;
+    font-size: 1rem;
+    font-weight: 600;
+    color: #0ff;
+    background: transparent;
+    border: 2px solid #0ff;
+    border-radius: 12px;
+    text-transform: uppercase;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    z-index: 0;
+}
+
+.project-btn-futuristic::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 300%;
+    height: 300%;
+    background: radial-gradient(circle, #0ff, #00f, transparent);
+    transition: all 0.5s ease;
+    transform: translate(-50%, -50%) scale(0);
+    border-radius: 50%;
+    z-index: -1;
+    opacity: 0.4;
+}
+
+.project-btn-futuristic:hover::before {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 1;
+}
+
+.project-btn-futuristic:hover {
+    color: #000;
+    background-color: #0ff;
+    box-shadow: 0 0 20px #0ff;
+    border-color: #0ff;
+}
+
+.project-card-alt {
+    background: rgba(255, 255, 255, 0.02);
+    border-radius: 16px;
+    padding: 2rem;
+    margin: 1.5rem 0;
+    box-shadow: 0 0 30px rgba(0, 255, 255, 0.1);
+    transition: box-shadow 0.3s ease, transform 0.2s ease;
+    backdrop-filter: blur(8px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.project-card-alt:hover {
+    box-shadow: 0 0 40px rgba(0, 255, 255, 0.25);
+}
+
+.projects-section {
+    font-family: 'Orbitron', tahoma;
+    color: #fff;
+}
+
+.projects-title {
+    text-align: center;
+    font-size: 2rem;
+    margin-bottom: 2rem;
+    font-family: inherit;
+}
+
+/* Media Query para 968px */
+@media (max-width: 968px) {
+    .project-btn-futuristic {
+        padding: 0.65rem 1.25rem; /* Botón más compacto */
+        font-size: 0.9rem; /* Texto ligeramente más pequeño */
+        margin-top: 1.2rem;
+    }
+
+    .project-card-alt {
+        padding: 1.5rem; /* Menor padding interno */
+        margin: 1.2rem 0; /* Margen vertical reducido */
+        border-radius: 14px; /* Bordes ligeramente menos redondeados */
+    }
+
+    .projects-title {
+        font-size: 1.8rem; /* Título más pequeño */
+        margin-bottom: 1.5rem;
+    }
+
+    /* Optimización del efecto hover para dispositivos táctiles */
+    @media (hover: none) {
+        .project-btn-futuristic:hover::before {
+            transform: translate(-50%, -50%) scale(0);
+            opacity: 0.4;
+        }
+        
+        .project-btn-futuristic:active::before {
+            transform: translate(-50%, -50%) scale(1);
+            opacity: 1;
+        }
+    }
+}
+
+/* Media Query para móviles (≤480px) */
+@media (max-width: 480px) {
+    .project-btn-futuristic {
+        padding: 0.5rem 1rem; /* Botón ultra compacto */
+        font-size: 0.8rem; /* Texto más pequeño */
+        margin-top: 1rem;
+        border-radius: 10px; /* Bordes menos redondeados */
+    }
+
+    .project-card-alt {
+        padding: 1.2rem; /* Padding mínimo */
+        margin: 1rem 0; /* Margen reducido */
+        border-radius: 12px;
+        backdrop-filter: blur(6px); /* Efecto blur ligeramente reducido */
+    }
+
+    .projects-title {
+        font-size: 1.6rem; /* Título más pequeño para móviles */
+        margin-bottom: 1.2rem;
+    }
+
+    /* Ajuste del efecto radial para móviles */
+    .project-btn-futuristic::before {
+        width: 250%;
+        height: 250%;
+    }
+}

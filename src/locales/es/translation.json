@@ -1,0 +1,59 @@
+{
+  "nav": {
+    "home": "inicio",
+    "about": "sobre mi",
+    "skills": "habilidades",
+    "projects": "proyectos",
+    "contact": "contacto"
+  }, 
+     
+  "hero": {
+    "greeting": "Hola, soy Alejandro Camayo",
+    "title": "Desarrollador web y diseñador"
+  },
+
+  "about": {
+    "title": "Sobre mí",
+    "description": "Soy un desarrollador web apasionado por crear experiencias digitales únicas. Me encanta fusionar el diseño y la tecnología para dar vida a ideas innovadoras. Siempre estoy explorando nuevas herramientas, frameworks y formas de mejorar la experiencia del usuario."
+  },
+  
+  "skills": {
+    "title": "Mis habilidades",
+    "loading": "Cargando habilidades..."
+  },
+  
+  "projects": {
+    "title": "Proyectos Destacados",
+    "button": "🚀 Ver proyecto",
+    "buttonHover": "Despegando... 🚀",
+    "project1": {
+      "title": "Intenso Calipan (En proceso)",
+      "description": "Página de delivery para un restaurante colombiano en Mallorca. Proyecto real."
+    },
+    "project2": {
+      "title": "Portafolio (Este proyecto)",
+      "description": "Este portafolio está en desarrollo como parte de mi aprendizaje."
+    },
+    "project3": {
+      "title": "Proyecto CSS",
+      "description": "Otro proyecto personal que hice específicamente para mejorar mis habilidades con CSS."
+    }
+  },
+  
+  "contact": {
+    "title": "Contáctame",
+    "form": {
+      "name": "Tu nombre",
+      "email": "Tu email",
+      "message": "Tu mensaje"
+    },
+    "button": "🚀 Enviar",
+    "success": "¡Mensaje enviado con éxito!",
+    "error": "Hubo un error, intenta de nuevo."
+  }
+
+
+
+
+
+}

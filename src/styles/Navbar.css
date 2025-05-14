@@ -1,0 +1,183 @@
+/* Estructura base */
+.navbar {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 999;
+  transition: top 0.3s;
+  backdrop-filter: blur(10px);
+  background-color: rgba(13, 13, 13, 0.6);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.navbar-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 1rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  color: #fff;
+  font-size: 1.5rem;
+  font-family: 'Orbitron', sans-serif;
+  letter-spacing: 2px;
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 2rem;
+}
+
+/* Estilos de los links */
+.nav-links a {
+  color: #ccc;
+  font-size: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  transition: all 0.3s ease;
+  text-decoration: none;
+  padding-bottom: 2px;
+}
+
+/* Home - Estilo especial SIN brillo */
+.nav-links a[href="#"],
+.nav-links a[href="#"].active {
+  color: #00ffff;
+  font-weight: bold;
+}
+
+/* Otros links - Efecto hover y active */
+.nav-links a:not([href="#"]):hover {
+  color: #30a2b6;
+}
+
+.nav-links a.active:not([href="#"]) {
+  color: #30a2b6;
+  font-weight: bold;
+  text-shadow: 0 0 8px rgba(48, 162, 182, 0.7);
+  border-bottom: 2px solid #30a2b6;
+}
+
+/* Comportamientos de hide/show */
+.navbar.hide {
+  top: -100px;
+}
+
+.navbar.show {
+  top: 0;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .nav-links {
+    gap: 1rem;
+  }
+}
+/* Botón "Volver arriba" */
+.back-to-top {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background: #00ffff;
+  color: #0d0d0d;
+  border: none;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  font-size: 1.2rem;
+  cursor: pointer;
+  z-index: 998;
+  opacity: 0.8;
+  transition: all 0.3s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.back-to-top:hover {
+  opacity: 1;
+  transform: scale(1.1);
+  box-shadow: 0 0 15px rgba(0, 255, 255, 0.5);
+}
+
+/* ======================
+   ESTILOS RESPONSIVE
+   ====================== */
+
+/* Botón hamburguesa - OCULTAR EN DESKTOP */
+.menu-toggle {
+  display: none; /* Oculto por defecto para todos los dispositivos */
+  background: none;
+  border: none;
+  color: white;
+  font-size: 1.8rem;
+  cursor: pointer;
+  padding: 0.5rem;
+}
+
+@media (max-width: 968px) {
+  .menu-toggle {
+    display: block; /* Aparece solo en móvil */
+    z-index: 999; /* Asegura que esté por encima del contenido */
+  }
+
+  .nav-links {
+    position: fixed;
+    top: 70px; /* Ajusta según la altura de tu navbar */
+    left: 0;
+    width: 100%;
+    background: rgba(13, 13, 13, 0.98);
+    flex-direction: column;
+    align-items: center;
+    clip-path: circle(0px at 90% -10%);
+    transition: clip-path 0.5s ease;
+    pointer-events: none;
+  }
+
+  .nav-links.mobile-active {
+    clip-path: circle(150% at 90% -10%);
+    pointer-events: all;
+  }
+
+  .nav-links li {
+    width: 100%;
+    text-align: center;
+  }
+
+  .nav-links a {
+    display: block;
+    padding: 1rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  }
+}
+
+.lang-switch {
+  background: transparent;
+  color: #0ff;
+  border: 2px solid #0ff;
+  border-radius: 8px;
+  padding: 0.3rem 0.75rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-left: 1rem;
+}
+
+.lang-switch:hover {
+  background-color: #0ff;
+  color: #000;
+  box-shadow: 0 0 10px #0ff;
+}
+
+@media (max-width: 968px) {
+  .lang-switch {
+    position: absolute;
+    top: 1.2rem;
+    right: 6rem; /* junto al botón de hamburguesa */
+    z-index: 1000;
+  }
+}

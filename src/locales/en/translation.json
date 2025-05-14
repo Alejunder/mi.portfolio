@@ -1,0 +1,63 @@
+{
+  "nav": {
+    "home": "home",
+    "about": "about",
+    "skills": "skills",
+    "projects": "projects",
+    "contact": "contact"
+  },
+
+  
+  "hero": {
+    "greeting": "Hi, I'm Alejandro Camayo",
+    "title": "Web Developer & Designer"
+  },
+  
+  "about": {
+    "title": "About Me",
+    "description": "I'm a web developer passionate about creating unique digital experiences. I love blending design and technology to bring innovative ideas to life. I'm always exploring new tools, frameworks, and ways to enhance user experience."
+  },
+
+  
+  "skills": {
+    "title": "My Skills",
+    "loading": "Loading skills..."
+  },
+  
+  "projects": {
+    "title": "Featured Projects",
+    "button": "🚀 View project",
+    "buttonHover": "Launching... 🚀",
+    "project1": {
+      "title": "Intenso Calipan (In progress)",
+      "description": "Delivery website for a Colombian restaurant in Mallorca. Real client project."
+    },
+    "project2": {
+      "title": "Portfolio (This project)",
+      "description": "This portfolio is under development as part of my learning journey."
+    },
+    "project3": {
+      "title": "CSS Project",
+      "description": "Another personal project made specifically to improve my CSS skills."
+    }
+  },
+
+  
+  "contact": {
+    "title": "Contact Me",
+    "form": {
+      "name": "Your name",
+      "email": "Your email",
+      "message": "Your message"
+    },
+    "button": "🚀 Send",
+    "success": "Message sent successfully!",
+    "error": "Error, please try again."
+  }
+
+
+
+
+
+
+}

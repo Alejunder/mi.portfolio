@@ -1,0 +1,50 @@
+.skills-section {
+    padding: 4rem 2rem;
+    text-align: center;
+    color: white;
+  }
+  
+  .skills-heading {
+    font-size: 2rem;
+    margin-bottom: 2rem;
+    font-family: 'Orbitron', sans-serif;
+  }
+  
+  .circle-skills-wrapper {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+  /* Media Query para 968px */
+@media (max-width: 968px) {
+    .skills-section {
+        padding: 3rem 1.5rem; /* Padding más compacto */
+    }
+
+    .skills-heading {
+        font-size: 1.8rem; /* Título ligeramente más pequeño */
+        margin-bottom: 1.5rem;
+    }
+
+    .circle-skills-wrapper {
+        gap: 0.8rem; /* Espacio entre elementos reducido */
+    }
+}
+
+/* Media Query para móviles (≤480px) */
+@media (max-width: 480px) {
+    .skills-section {
+        padding: 2rem 1rem; /* Padding aún más ajustado */
+    }
+
+    .skills-heading {
+        font-size: 1.5rem; /* Título más pequeño para móviles */
+        margin-bottom: 1.2rem;
+    }
+
+    .circle-skills-wrapper {
+        gap: 0.5rem; /* Espacio mínimo entre elementos */
+    }
+}
+  
