@@ -164,7 +164,6 @@
   font-weight: bold;
   cursor: pointer;
   transition: all 0.3s ease;
-  margin-left: 1rem;
 }
 
 .lang-switch:hover {
@@ -173,11 +172,8 @@
   box-shadow: 0 0 10px #0ff;
 }
 
-@media (max-width: 968px) {
+@media screen and (max-width: 968px){
   .lang-switch {
-    position: absolute;
-    top: 1.2rem;
-    right: 6rem; /* junto al botón de hamburguesa */
-    z-index: 1000;
+    margin: 1rem 2rem 2rem 1rem;
   }
 }

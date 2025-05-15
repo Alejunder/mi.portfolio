@@ -92,7 +92,7 @@ export default function Contact() {
     <section id="contact" className="contact-section">
       <div style={{ perspective: "1000px" }}>
         <motion.div
-          className="contact-container"
+          className="contact-card"
           onMouseMove={handleMouseMove}
           onMouseLeave={handleMouseLeave}
           style={{

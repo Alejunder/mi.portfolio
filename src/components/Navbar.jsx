@@ -65,7 +65,7 @@ function Navbar() {
         <div className="navbar-container">
           <h1 className="logo">MySpace</h1>
 
-          <LanguageSwitcher />
+          
 
           <button 
             className="menu-toggle" 
@@ -87,6 +87,9 @@ function Navbar() {
                 </a>
               </li>
             ))}
+            <li>
+              <LanguageSwitcher />
+            </li>
           </ul>
         </div>
       </nav>

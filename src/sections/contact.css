@@ -1,24 +1,23 @@
 .contact-section {
     min-height: 100vh;
+    color: white;
     display: flex;
     align-items: center;
     justify-content: center;
     padding: 40px 20px;
-    color: white;
-    background: transparent;
+    box-sizing: border-box;
   }
   
-  .contact-container {
-    max-width: 1000px;
-    width: 100%;
-    background: rgba(255, 255, 255, 0.05);
+  /* Tarjeta tipo holograma */
+  .contact-card {
+    max-width: 800px;
+    padding: 40px;
     border: 1px solid rgba(255, 255, 255, 0.1);
     border-radius: 20px;
-    padding: 100px;
-    backdrop-filter: blur(10px);
     box-shadow: 0 0 20px rgba(0, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
   }
-  
   .contact-title {
     font-family: 'Orbitron', sans-serif;
     font-size: 32px;
@@ -67,50 +66,49 @@
   
   .contact-form button:hover {
     background: white;
-    color: black;
+    color: black
   }
-  
-  /* Media Query para 968px */
-@media (max-width: 968px) {
-    .contact-container {
-        padding: 60px 40px; /* Reducimos el padding */
-        margin: 0 20px; /* Añadimos margen lateral */
-    }
 
-    .contact-title {
-        font-size: 28px; /* Título más pequeño */
-        margin-bottom: 20px;
-    }
 
-    .contact-form {
-        gap: 15px; /* Menor espacio entre elementos */
-    }
 
-    .contact-form input,
-    .contact-form textarea {
-        padding: 10px 14px; /* Padding más ajustado */
-        font-size: 16px; /* Texto ligeramente más pequeño */
-    }
 
-    .contact-form button {
-        padding: 10px; /* Botón más compacto */
-        font-size: 16px;
-    }
-}
 
-/* Media Query adicional para móviles pequeños (opcional) */
-@media (max-width: 480px) {
-    .contact-container {
-        padding: 40px 20px; /* Aún más compacto */
-        border-radius: 15px; /* Bordes menos pronunciados */
-    }
 
-    .contact-title {
-        font-size: 24px; /* Título más pequeño para móviles */
-    }
 
-    .contact-form input,
-    .contact-form textarea {
-        font-size: 14px; /* Mejor legibilidad en móviles */
-    }
-}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
