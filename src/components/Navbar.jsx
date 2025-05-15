@@ -1,5 +1,5 @@
 import { useEffect, useState, useCallback } from 'react';
-import '../styles/navbar.css';
+import '../styles/Navbar.css';
 import LanguageSwitcher from '../components/LanguageSwitcher';
 import { useTranslation } from 'react-i18next';
 
