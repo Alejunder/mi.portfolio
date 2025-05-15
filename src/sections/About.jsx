@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import { useTranslation } from 'react-i18next'; // Añadido
 import TiltCard from "../components/TiltCard";
-import "./About.css";
+import "./about.css";
 
 export default function About() {
   const { t } = useTranslation(); // Añadido
