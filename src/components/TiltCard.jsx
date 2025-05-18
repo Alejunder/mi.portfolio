@@ -1,6 +1,5 @@
 import { useRef } from "react";
 import { motion, useMotionValue, useTransform } from "framer-motion";
-
 const TiltCard = ({ children, className }) => {
   const ref = useRef(null);
   const x = useMotionValue(0);
