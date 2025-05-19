@@ -16,7 +16,7 @@ function App() {
     <>
       <Helmet>
         <title>AleCam Developer</title>
-        <meta name="description" content="Joven programador especializado en JavaScript, React y desarrollo frontend en España. Creo aplicaciones web rápidas con Vite, diseño interfaces atractivas y optimizadas para SEO. Experto en maquetación HTML/CSS, integración de ChatGPT en webs y desarrollo con Node.js. ¿Buscas un desarrollador front-end creativo y eficiente? ¡Contáctame!" />
+        <meta name="description" content="Joven programador especializado en JavaScript, React y desarrollo frontend en Mallorca, España. Creo aplicaciones web rápidas con Vite, diseño interfaces atractivas y optimizadas para SEO. Experto en maquetación HTML/CSS, integración de ChatGPT en webs y desarrollo con Node.js. ¿Buscas un desarrollador front-end creativo y eficiente? ¡Contáctame!" />
         <meta name="keywords" content="Desarrollador Frontend, Programador JavaScript, Desarrollador React, Maquetación HTML CSS, Desarrollo con Vite, Aplicaciones web rápidas, Optimización SEO, Diseño responsivo, Integración ChatGPT, Node.js, Joven programador, Portafolio desarrollador web, desarrollo web en mallorca, javascript Mallorca" />
         <meta name="author" content="Alejandro Camayo" />
         <meta property="og:title" content="Mi portfolio" />
