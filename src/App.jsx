@@ -25,6 +25,7 @@ function App() {
         <meta property="og:image" content="/og-image.jpg" />
         <meta property="og:url" content="https://alecam.dev" />
         <meta name="twitter:card" content="summary_large_image" />
+        <meta name="google-site-verification" content="ReW9F-aWf7qV0cD-Z1Uoq5BhdtMNBOa7iLrszL_oIGk" />
       </Helmet>
 
       <Navbar />
