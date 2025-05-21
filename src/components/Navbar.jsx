@@ -3,6 +3,7 @@ import '../styles/Navbar.css';
 import LanguageSwitcher from '../components/LanguageSwitcher';
 import { useTranslation } from 'react-i18next';
 
+
 function Navbar() {
   const { t, i18n } = useTranslation();
   const [show, setShow] = useState(true);
@@ -63,10 +64,10 @@ function Navbar() {
     <>
       <nav className={`navbar ${show ? 'show' : 'hide'}`}>
         <div className="navbar-container">
-          <h1 className="logo">MySpace</h1>
-
-          
-
+         <div className="logo-container">
+           <img src="/alecam-logo.svg" alt="logo alecam" className="navbar-logo" />
+         </div>  
+  
           <button 
             className="menu-toggle" 
             onClick={() => setIsMenuOpen(!isMenuOpen)}
