@@ -6,7 +6,7 @@ import "../styles/projects.css";
 const projects = [
   {
     key: "project1",
-    link: "https://intenso-calipan.vercel.app",
+    // link: "", // 
     accent: "#0ff",
   },
   {
@@ -23,10 +23,9 @@ const projects = [
 
 function Hover3DCard({ project, delay }) {
   const { t } = useTranslation();
-  const cardRef = useRef(null)
+  const cardRef = useRef(null);
   const [btnText, setBtnText] = useState(t('projects.button'));
 
-  // Toda la lógica original intacta
   const handleMouseMove = (e) => {
     const card = cardRef.current;
     const rect = card.getBoundingClientRect();
@@ -46,7 +45,9 @@ function Hover3DCard({ project, delay }) {
   const handleBtnHover = () => {
     setBtnText(t('projects.buttonHover'));
   };
-  
+
+  const isHiddenButton = project.key === "project1";
+
   return (
     <motion.div
       className="project-card-alt"
@@ -62,16 +63,22 @@ function Hover3DCard({ project, delay }) {
       <div className="project-content">
         <h3 style={{ color: project.accent }}>{t(`projects.${project.key}.title`)}</h3>
         <p>{t(`projects.${project.key}.description`)}</p>
-        <a
-          href={project.link}
+        <motion.a
+          href={project.link || "#"}
           target="_blank"
           rel="noopener noreferrer"
           className="project-btn-futuristic"
           onMouseEnter={handleBtnHover}
           onMouseLeave={() => setBtnText(t('projects.button'))}
+          initial={{ opacity: isHiddenButton ? 0 : 1 }}
+          animate={{ opacity: isHiddenButton ? 0 : 1 }}
+          style={{
+            pointerEvents: isHiddenButton ? 'none' : 'auto',
+            cursor: isHiddenButton ? 'default' : 'pointer',
+          }}
         >
           <span>{btnText}</span>
-        </a>
+        </motion.a>
       </div>
     </motion.div>
   );
