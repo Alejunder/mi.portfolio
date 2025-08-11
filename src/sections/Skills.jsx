@@ -34,18 +34,20 @@ function Skills() {
   const skills = getSkills(t);
 
   // Event handlers for card tilt effect
-  const handleMouseMove = (e, index) => {
+  const handleMouseMove = (e) => {
     // Card tilt effect implementation
     const card = e.currentTarget;
     const rect = card.getBoundingClientRect();
     const x = e.clientX - rect.left - rect.width / 2;
     const y = e.clientY - rect.top - rect.height / 2;
     card.style.transform = `perspective(1000px) rotateX(${-y * 0.05}deg) rotateY(${x * 0.05}deg)`;
+    card.style.zIndex = "1";
   };
   
   const handleMouseLeave = (e) => {
     // Reset card rotation
     e.currentTarget.style.transform = "perspective(1000px) rotateX(0deg) rotateY(0deg)";
+    e.currentTarget.style.zIndex = "0";
   };
 
   return (
@@ -71,6 +73,10 @@ function Skills() {
                 style={{
                   transition: "transform 0.15s ease-out",
                   transformStyle: "preserve-3d",
+                  background: "transparent",
+                  outline: "none",
+                  border: "none",
+                  boxShadow: "none"
                 }}
               >
                 <motion.div
@@ -97,6 +103,10 @@ function Skills() {
                 style={{
                   transition: "transform 0.15s ease-out",
                   transformStyle: "preserve-3d",
+                  background: "transparent",
+                  outline: "none",
+                  border: "none",
+                  boxShadow: "none"
                 }}
               >
                 <motion.div

@@ -4,11 +4,29 @@
     height: 120px;
     margin: 1rem;
     text-align: center;
+    transform-style: preserve-3d;
+    will-change: transform;
+    cursor: pointer;
+    outline: none;
+    border: none;
+    background: transparent;
+    overflow: visible;
   }
   
   .circle-svg {
     transform: rotate(-90deg);
     size: 100;
+    filter: drop-shadow(0 0 2px rgba(255, 255, 255, 0.2));
+    transition: all 0.3s ease;
+    border: none;
+    outline: none;
+    overflow: visible;
+  }
+  
+  .animated-circle {
+    will-change: transform, filter;
+    outline: none;
+    border: none;
   }
   
   .circle-text {
@@ -17,42 +35,54 @@
     left: 50%;
     transform: translate(-50%, -50%);
     color: white;
-    width: 90%;  /* Slightly wider for more text room */
-    max-height: 90%;  /* Ensure text doesn't extend beyond circle */
+    width: 80%;  /* Wider to ensure text fits */
+    height: auto;  /* Let it adjust based on content */
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    overflow: hidden;
-    padding: 2px;
+    justify-content: center; /* Center vertically */
+    align-items: center; /* Center horizontally */
+    overflow: visible;
+    padding: 0;
+    will-change: transform;
+    text-align: center;
+    z-index: 2;
   }
   
   .title-container {
-    width: 80%;
+    width: 100%;
     overflow: hidden;
     text-overflow: ellipsis;
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-bottom: 4px;
+    margin-bottom: 6px;
+    text-align: center;
+    position: relative;
   }
   
   .skill-title {
-    font-size: 0.9rem;
-    margin: 0;
+    font-size: 0.85rem;
+    margin: 0 auto; /* Center horizontally with auto margins */
     white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
+    overflow: visible; /* Changed from hidden to visible to prevent cutting off letters */
     text-align: center;
     width: 100%;
+    line-height: 1.4; /* Increased line height to prevent clipping */
+    display: block; /* Ensure block display for centering */
+    position: relative;
+    top: 0;
+    transform: translateY(0);
+    padding: 2px 0; /* Added padding to prevent text clipping */
+    color: #e6e6e6; /* Lighter shade for better readability */
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5); /* Add subtle shadow for contrast */
   }
   
   .skill-title.sm-text {
-    font-size: 0.75rem;
+    font-size: 0.7rem;
   }
   
   .skill-title.xs-text {
-    font-size: 0.65rem;
+    font-size: 0.6rem;
   }
   
   .skill-title.multiline {
@@ -61,12 +91,173 @@
     -webkit-line-clamp: 2;
     line-clamp: 2;
     -webkit-box-orient: vertical;
-    line-height: 1.1;
-    max-height: 2.2em;
+    line-height: 1.3; /* Increased line height */
+    max-height: 2.6em; /* Increased max height to accommodate line height */
+    margin: 0 auto;
+    text-align: center;
+    overflow: visible; /* Prevent letter clipping */
+    padding: 2px 0; /* Add padding to prevent text clipping */
   }
   
-  .circle-text span {
-    font-size: 0.9rem;
+  .title-centered {
+    position: absolute;
+    top: 30%; /* Positioned higher to prevent clash with percentage */
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 78%; /* Slightly wider */
+    text-align: center;
+    z-index: 2;
+    height: auto;
+    padding: 3px 0; /* Add padding to ensure letters are not cut off */
+    overflow: visible; /* Prevent clipping */
+  }
+  
+  .percent-text {
+    font-size: 0.85rem;
     color: #aaa;
+    transition: color 0.3s ease, font-size 0.3s ease;
+    will-change: color, font-size;
+    max-width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    text-align: center;
+    margin: 0 auto;
+    display: block;
+    position: absolute;
+    top: 55%; /* Positioned lower to create more space from title */
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 2;
+    font-weight: 600; /* Bolder percentage for better visibility */
+  }
+  
+  /* Mobile animations */
+  @media (hover: none) {
+    .circle-container {
+      animation: floatAnimation 5s ease-in-out infinite alternate;
+    }
+    
+    .circle-container:nth-child(odd) {
+      animation-delay: 0.5s;
+    }
+    
+    .circle-container:nth-child(3n) {
+      animation-delay: 1s;
+    }
+    
+    .circle-container:nth-child(4n) {
+      animation-delay: 1.5s;
+    }
+    
+    .animated-circle {
+      animation: pulseCircle 3s ease-in-out infinite alternate;
+    }
+    
+    .title-centered h4 {
+      animation: glowText 4s ease-in-out infinite alternate;
+    }
+    
+    .percent-text {
+      animation: blinkNumber 5s ease-in-out infinite;
+    }
+  }
+  
+  @keyframes floatAnimation {
+    0% {
+      transform: translateY(0);
+    }
+    100% {
+      transform: translateY(-8px);
+    }
+  }
+  
+  @keyframes pulseCircle {
+    0% {
+      filter: drop-shadow(0 0 2px rgba(255, 255, 255, 0.2));
+    }
+    100% {
+      filter: drop-shadow(0 0 6px rgba(255, 255, 255, 0.6));
+    }
+  }
+  
+  @keyframes glowText {
+    0% {
+      opacity: 0.8;
+      text-shadow: none;
+    }
+    100% {
+      opacity: 1;
+      text-shadow: 0 0 5px rgba(255, 255, 255, 0.7);
+    }
+  }
+  
+  @keyframes blinkNumber {
+    0%, 100% {
+      opacity: 0.8;
+      transform: scale(1);
+    }
+    50% {
+      opacity: 1;
+      transform: scale(1.05);
+    }
+  }
+  
+  /* Additional responsive adjustments for smaller screens */
+  @media (max-width: 768px) {
+    .circle-container {
+      width: 110px;
+      height: 110px;
+      margin: 0.8rem;
+    }
+    
+    .skill-title {
+      font-size: 0.8rem;
+    }
+    
+    .skill-title.sm-text {
+      font-size: 0.65rem;
+    }
+    
+    .skill-title.xs-text {
+      font-size: 0.55rem;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .circle-container {
+      width: 100px;
+      height: 100px;
+      margin: 0.6rem;
+    }
+    
+    .title-centered {
+      width: 80%; 
+      top: 30%; 
+      padding: 2px 0;
+    }
+    
+    .skill-title {
+      font-size: 0.75rem;
+      margin: 0 auto;
+      line-height: 1.3; 
+      padding: 1px 0;
+      color: #e6e6e6; 
+      text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5); 
+    }
+    
+    .skill-title.sm-text {
+      font-size: 0.62rem; 
+    }
+    
+    .skill-title.xs-text {
+      font-size: 0.52rem; 
+      line-height: 1.4; 
+    }
+    
+    .percent-text {
+      font-size: 0.75rem;
+      top: 55%; 
+      font-weight: 600; 
+    }
   }
   

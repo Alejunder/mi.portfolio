@@ -28,6 +28,18 @@
     color: #00f0ff;
     margin-bottom: 1.5rem;
     text-shadow: 0 0 10px rgba(0, 240, 255, 0.3);
+    animation: floatHeading 4s ease-in-out infinite alternate;
+  }
+  
+  @keyframes floatHeading {
+    0% {
+      transform: translateY(0);
+      text-shadow: 0 0 10px rgba(0, 240, 255, 0.3);
+    }
+    100% {
+      transform: translateY(-5px);
+      text-shadow: 0 0 15px rgba(0, 240, 255, 0.6);
+    }
   }
 
   .circle-skills-wrapper {
@@ -37,6 +49,22 @@
     gap: 1rem;
     max-width: 900px;
     margin: 0 auto;
+    perspective: 1000px;
+  }
+  
+  .skill-card {
+    transform-style: preserve-3d;
+    transition: transform 0.3s ease-out;
+    z-index: 0;
+    border: none;
+    outline: none;
+    background: transparent;
+    overflow: visible;
+    box-shadow: none;
+  }
+  
+  .skill-card:hover {
+    z-index: 2;
   }
   /* Media Query para 968px */
 @media (max-width: 968px) {
