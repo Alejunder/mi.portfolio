@@ -1,12 +1,14 @@
 import { useState, useRef } from "react";
 import { motion, useMotionValue, useSpring, AnimatePresence } from "framer-motion";
 import { useTranslation } from 'react-i18next';
+import { useFadeOut } from "../context/FadeOutContext";
 import emailjs from "@emailjs/browser";
 import confetti from "canvas-confetti";
-import "./contact.css";
+import "../styles/contact.css";
 
 export default function Contact() {
   const { t } = useTranslation();
+  const { controls } = useFadeOut();
   const formRef = useRef();
   const [form, setForm] = useState({ name: "", email: "", message: "" });
   const [success, setSuccess] = useState(false);
@@ -89,7 +91,11 @@ export default function Contact() {
   };
 
   return (
-    <section id="contact" className="contact-section">
+    <motion.section 
+      className="contact-section"
+      initial={{ opacity: 1 }}
+      animate={controls}
+    >
       <div style={{ perspective: "1000px" }}>
         <motion.div
           className="contact-card"
@@ -160,6 +166,6 @@ export default function Contact() {
           </AnimatePresence>
         </motion.div>
       </div>
-    </section>
+    </motion.section>
   );
 }

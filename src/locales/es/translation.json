@@ -4,22 +4,26 @@
     "about": "sobre mi",
     "skills": "habilidades",
     "projects": "proyectos",
+    "certifications": "certificaciones",
     "contact": "contacto"
   }, 
      
   "hero": {
     "greeting": "Hola, soy Alejandro Camayo",
-    "title": "Desarrollador web y diseñador"
+    "title": "Desarrollador Web Full Stack"
   },
 
   "about": {
     "title": "Sobre mí",
-    "description": "Joven programador especializado en JavaScript, React y desarrollo frontend en Mallorca, España. Creo aplicaciones web rápidas con Vite, diseño interfaces atractivas y optimizadas para SEO. Experto en maquetación HTML/CSS, integración de ChatGPT en webs y desarrollo con Node.js. ¿Buscas un desarrollador front-end creativo y eficiente? ¡Contáctame!"
+    "description": "Empecé en el mundo de la programación en septiembre de 2024. Comencé con frontend, un aprendizaje que duró hasta abril de este año. Estuve trabajando en mi portafolio hasta finales de mayo.\n\nYa con mi frontend sólido, continué con mi aprendizaje y empecé a formarme en inteligencia artificial durante el mes de junio. Aprendí diferentes herramientas para automatizar procesos, tanto no-code como Make, o de código como n8n. De estas dos aprendí de forma más superficial, con el objetivo de entender cómo funciona la tecnología más moderna.\n\nA finales de junio, comencé con mi formación en backend. Julio fue un mes en el que me propuse aprender backend, un propósito que cumplí. Ahora estoy puliendo y profundizando en ciertos temas, pero ya me puedo considerar un desarrollador fullstack listo para resolver todo tipo de problemas. Gracias a mi capacidad de adaptarme a cualquier situación y a mi facilidad de aprendizaje, puedo enfrentar cualquier reto.\n\nSi tienes un proyecto en mente y quieres hacerlo despegar, acabas de encontrar tu mejor opción."
   },
   
   "skills": {
     "title": "Mis habilidades",
-    "loading": "Cargando habilidades..."
+    "loading": "Cargando habilidades...",
+    "iaTools": "Herramientas de IA",
+    "frontend": "Frontend",
+    "backend": "Backend"
   },
   
   "projects": {
@@ -27,8 +31,8 @@
     "button": "🚀 Ver proyecto",
     "buttonHover": "Despegando... 🚀",
     "project1": {
-      "title": "Página para vender a restaurantes y mejorando otra para una empresa de arquitectura (En proceso)",
-      "description": "Página de delivery para restaurantes en Mallorca. En un futuro cercano mejoraré una para una empresa de arquitectura."
+      "title": "Página web Fullstack y próximamente otra para una empresa de arquitectura...",
+      "description": ""
     },
     "project2": {
       "title": "Portafolio (Este proyecto)",
@@ -50,6 +54,13 @@
     "button": "🚀 Enviar",
     "success": "¡Mensaje enviado con éxito!",
     "error": "Hubo un error, intenta de nuevo."
+  },
+
+  "certifications": {
+    "title": "Certificaciones",
+    "viewAll": "Ver Todas las Certificaciones",
+    "goBack": "Volver",
+    "clickToView": "Clic para ampliar"
   }
 
 

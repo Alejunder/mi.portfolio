@@ -8,12 +8,24 @@ const CircularSkill = ({ title, percent, color }) => {
   const normalizedRadius = radius - stroke * 0.5;
   const circumference = 2 * Math.PI * normalizedRadius;
   const strokeDashoffset = circumference - (percent / 100) * circumference;
+  
+  // Determine if we need special text handling based on title length and content
+  const getTextClass = () => {
+    if (title.length > 15) return 'multiline xs-text';
+    if (title.length > 12) return 'xs-text';
+    if (title.length > 9) return 'sm-text';
+    // For shorter text but with special characters or wide characters
+    if (title.includes(' ') && title.length > 7) return 'sm-text';
+    return '';
+  };
 
   return (
     <motion.div
       className="circle-container"
       whileHover={{ scale: 1.05 }}
-      transition={{ duration: 0.3 }}
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.5 }}
     >
       <svg
         height={radius * 2}
@@ -44,7 +56,9 @@ const CircularSkill = ({ title, percent, color }) => {
         />
       </svg>
       <div className="circle-text">
-        <h4>{title}</h4>
+        <div className="title-container">
+          <h4 className={`skill-title ${getTextClass()}`}>{title}</h4>
+        </div>
         <span>{percent}%</span>
       </div>
     </motion.div>

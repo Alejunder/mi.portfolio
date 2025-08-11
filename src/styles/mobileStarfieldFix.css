@@ -1,0 +1,70 @@
+/* Mobile optimization for starfield animation */
+@media (max-width: 768px) {
+  /* Increase the size of the star button for better touch targets */
+  .star-button {
+    width: 90px;
+    height: 90px;
+    touch-action: manipulation; /* Improve touch behavior */
+  }
+  
+  /* Make sure the button has enough space around it */
+  .star-warp-container {
+    padding: 4rem 2rem;
+    margin: 1rem 0;
+  }
+  
+  /* Add a visible outline for better visual feedback on mobile */
+  .star-button:active .star-shape {
+    transform: scale(0.9);
+    transition: transform 0.1s ease-out;
+  }
+  
+  /* Add more clear focus states for accessibility */
+  .star-button:focus {
+    outline: 3px solid #00f0ff;
+    outline-offset: 6px;
+  }
+}
+
+/* Small mobile devices */
+@media (max-width: 480px) {
+  .star-button {
+    width: 75px;
+    height: 75px;
+  }
+  
+  .certitle {
+    font-size: 2.3rem;
+    margin-bottom: 2.5rem;
+  }
+  
+  /* Improve animation performance on low-end devices */
+  .star-shape {
+    animation: starPulse 3s ease-in-out infinite; /* Slower animation to reduce GPU load */
+    filter: drop-shadow(0 0 5px #00f0ff) brightness(1.3); /* Simplified filter for better performance */
+  }
+  
+  @keyframes starPulse {
+    0%, 100% {
+      box-shadow: 0 0 20px #00f0ff, inset 0 0 15px #00ffff44;
+      transform: scale(1);
+    }
+    50% {
+      box-shadow: 0 0 40px #00ffff, inset 0 0 25px #00f0ff77;
+      transform: scale(1.05);
+    }
+  }
+}
+
+/* Improve touch handling for all touch devices */
+@media (pointer: coarse) {
+  .star-button {
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent; /* Remove default mobile tap highlight */
+  }
+  
+  /* Ensure straight-line animations work well on touch devices */
+  .warp-ring {
+    animation-duration: 1s; /* Slightly faster animation on mobile */
+  }
+}

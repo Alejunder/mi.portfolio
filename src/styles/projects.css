@@ -1,3 +1,4 @@
+
 /* Estilos base (Desktop) */
 .project-btn-futuristic {
     display: inline-block;
@@ -59,7 +60,6 @@
 }
 
 .projects-section {
-    font-family: 'Orbitron', tahoma;
     color: #fff;
 }
 
@@ -67,7 +67,6 @@
     text-align: center;
     font-size: 2rem;
     margin-bottom: 2rem;
-    font-family: inherit;
 }
 
 /* Media Query para 968px */

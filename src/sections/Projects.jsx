@@ -1,6 +1,7 @@
 import { useRef, useState } from "react";
 import { motion } from "framer-motion";
 import { useTranslation } from 'react-i18next';
+import { useFadeOut } from "../context/FadeOutContext";
 import "../styles/projects.css";
 
 const projects = [
@@ -11,7 +12,7 @@ const projects = [
   },
   {
     key: "project2",
-    link: "#",
+    link: "/",
     accent: "#f0f",
   },
   {
@@ -24,7 +25,7 @@ const projects = [
 function Hover3DCard({ project, delay }) {
   const { t } = useTranslation();
   const cardRef = useRef(null);
-  const [btnText, setBtnText] = useState(t('projects.button'));
+  const [isHovered, setIsHovered] = useState(false);
 
   const handleMouseMove = (e) => {
     const card = cardRef.current;
@@ -39,11 +40,11 @@ function Hover3DCard({ project, delay }) {
   const resetTransform = () => {
     const card = cardRef.current;
     card.style.transform = "perspective(1000px) rotateX(0deg) rotateY(0deg)";
-    setBtnText(t('projects.button'));
+    setIsHovered(false);
   };
 
   const handleBtnHover = () => {
-    setBtnText(t('projects.buttonHover'));
+    setIsHovered(true);
   };
 
   const isHiddenButton = project.key === "project1";
@@ -55,10 +56,9 @@ function Hover3DCard({ project, delay }) {
       style={{ borderLeft: `4px solid ${project.accent}` }}
       onMouseMove={handleMouseMove}
       onMouseLeave={resetTransform}
-      initial={{ opacity: 0, y: 50 }}
-      whileInView={{ opacity: 1, y: 0 }}
+      initial={{ opacity: 1, y: 0 }}
+      animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.6, delay }}
-      viewport={{ once: true }}
     >
       <div className="project-content">
         <h3 style={{ color: project.accent }}>{t(`projects.${project.key}.title`)}</h3>
@@ -69,7 +69,7 @@ function Hover3DCard({ project, delay }) {
           rel="noopener noreferrer"
           className="project-btn-futuristic"
           onMouseEnter={handleBtnHover}
-          onMouseLeave={() => setBtnText(t('projects.button'))}
+          onMouseLeave={() => setIsHovered(false)}
           initial={{ opacity: isHiddenButton ? 0 : 1 }}
           animate={{ opacity: isHiddenButton ? 0 : 1 }}
           style={{
@@ -77,7 +77,7 @@ function Hover3DCard({ project, delay }) {
             cursor: isHiddenButton ? 'default' : 'pointer',
           }}
         >
-          <span>{btnText}</span>
+          <span>{isHovered ? t('projects.buttonHover') : t('projects.button')}</span>
         </motion.a>
       </div>
     </motion.div>
@@ -86,15 +86,20 @@ function Hover3DCard({ project, delay }) {
 
 export default function Projects() {
   const { t } = useTranslation();
+  const { controls } = useFadeOut();
 
   return (
-    <section id='projects' className="projects-section">
+    <motion.section 
+      id='projects' 
+      className="projects-section"
+      initial={{ opacity: 1 }}
+      animate={controls}
+    >
       <motion.h2
         className="projects-title"
-        initial={{ opacity: 0, y: -20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6 }}
-        viewport={{ once: true }}
+        initial={{ opacity: 1, y: 0 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.3 }}
       >
         {t('projects.title')}
       </motion.h2>
@@ -104,6 +109,6 @@ export default function Projects() {
           <Hover3DCard key={i} project={proj} delay={i * 0.2} />
         ))}
       </div>
-    </section>
+    </motion.section>
   );
 }

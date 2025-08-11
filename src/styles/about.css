@@ -20,9 +20,8 @@
     -webkit-backdrop-filter: blur(10px);
   }
   
-  /* Título con Orbitron */
+  /* Título  */
   .about-title {
-    font-family: 'Orbitron', sans-serif;
     font-size: 36px;
     color: cyan;
     text-align: center;
@@ -30,17 +29,31 @@
     letter-spacing: 1px;
   }
   
-  /* Texto con Raleway */
+  
   .about-text {
-    font-family: 'Raleway', sans-serif;
-    font-size: 18px;
+    font-size: 16px;
     color: #ccc;
     line-height: 1.7;
     text-align: justify;
+    white-space: pre-line;
   }
 
   .about-tilt-wrapper {
     will-change: transform;
+  }
+
+  @media (max-width: 768px) {
+    .about-card {
+      padding: 20px;
+    }
+  
+    .about-title {
+      font-size: 28px;
+    }
+  
+    .about-text {
+      font-size: 12px;
+    }
   }
   
   

@@ -5,16 +5,38 @@
   }
   
   .skills-heading {
-    font-size: 2rem;
+    font-size: 3rem;
     margin-bottom: 2rem;
-    font-family: 'Orbitron', sans-serif;
   }
   
+  .skills-container {
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+    margin: 0 auto;
+  }
+
+  .skills-category {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 1rem;
+  }
+
+  .category-heading {
+    font-size: 1.5rem;
+    color: #00f0ff;
+    margin-bottom: 1.5rem;
+    text-shadow: 0 0 10px rgba(0, 240, 255, 0.3);
+  }
+
   .circle-skills-wrapper {
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
     gap: 1rem;
+    max-width: 900px;
+    margin: 0 auto;
   }
   /* Media Query para 968px */
 @media (max-width: 968px) {
@@ -23,7 +45,7 @@
     }
 
     .skills-heading {
-        font-size: 1.8rem; /* Título ligeramente más pequeño */
+        font-size: 3rem; /* Título ligeramente más pequeño */
         margin-bottom: 1.5rem;
     }
 
@@ -39,7 +61,7 @@
     }
 
     .skills-heading {
-        font-size: 1.5rem; /* Título más pequeño para móviles */
+        font-size: 2.5rem; /* Título más pequeño para móviles */
         margin-bottom: 1.2rem;
     }
 

@@ -30,6 +30,10 @@
   gap: 2rem;
 }
 
+.nav-links.is-es{
+  gap: 1rem;
+}
+
 /* Estilos de los links */
 .nav-links a {
   color: #ccc;

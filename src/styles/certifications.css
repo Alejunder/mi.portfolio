@@ -1,0 +1,57 @@
+.certifications-section.only-button {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 55vh;
+  padding: 0;
+  margin: 0;
+  background: transparent;
+  text-align: center;
+}
+
+.certification-button-container {
+  margin-top: 2rem;
+}
+
+
+
+/* Warp efecto expansivo */
+.warp-ring {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  background: radial-gradient(circle, #00f0ff88 20%, transparent 70%);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  animation: warpExpand 1.2s ease-out forwards;
+  z-index: 1;
+  pointer-events: none;
+  filter: blur(20px);
+}
+
+@keyframes warpExpand {
+  0% {
+    width: 0;
+    height: 0;
+    opacity: 1;
+  }
+  100% {
+    width: 600px;
+    height: 600px;
+    opacity: 0;
+  }
+}
+
+@media (max-width: 480px) {
+  .certitle {
+    font-size: 2rem;
+  }
+  .certifications-section.only-button {
+    min-height: 100vh;
+  }
+}
+
+
