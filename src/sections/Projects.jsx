@@ -1,8 +1,7 @@
-import { useRef, useState } from "react";
-import { motion } from "framer-motion";
 import { useTranslation } from 'react-i18next';
-import { useFadeOut } from "../context/FadeOutContext";
+import ProjectCarousel from "../components/ProjectCarousel";
 import "../styles/projects.css";
+import "../styles/projectCarousel.css";
 
 const projects = [
   {
@@ -12,7 +11,7 @@ const projects = [
   },
   {
     key: "project2",
-    link: "/",
+    //link: "", //
     accent: "#f0f",
   },
   {
@@ -22,93 +21,19 @@ const projects = [
   },
 ];
 
-function Hover3DCard({ project, delay }) {
-  const { t } = useTranslation();
-  const cardRef = useRef(null);
-  const [isHovered, setIsHovered] = useState(false);
-
-  const handleMouseMove = (e) => {
-    const card = cardRef.current;
-    const rect = card.getBoundingClientRect();
-    const x = e.clientX - rect.left - rect.width / 2;
-    const y = e.clientY - rect.top - rect.height / 2;
-    const rotateX = (-y / 20).toFixed(2);
-    const rotateY = (x / 20).toFixed(2);
-    card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
-  };
-
-  const resetTransform = () => {
-    const card = cardRef.current;
-    card.style.transform = "perspective(1000px) rotateX(0deg) rotateY(0deg)";
-    setIsHovered(false);
-  };
-
-  const handleBtnHover = () => {
-    setIsHovered(true);
-  };
-
-  const isHiddenButton = project.key === "project1";
-
-  return (
-    <motion.div
-      className="project-card-alt"
-      ref={cardRef}
-      style={{ borderLeft: `4px solid ${project.accent}` }}
-      onMouseMove={handleMouseMove}
-      onMouseLeave={resetTransform}
-      initial={{ opacity: 1, y: 0 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.6, delay }}
-    >
-      <div className="project-content">
-        <h3 style={{ color: project.accent }}>{t(`projects.${project.key}.title`)}</h3>
-        <p>{t(`projects.${project.key}.description`)}</p>
-        <motion.a
-          href={project.link || "#"}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="project-btn-futuristic"
-          onMouseEnter={handleBtnHover}
-          onMouseLeave={() => setIsHovered(false)}
-          initial={{ opacity: isHiddenButton ? 0 : 1 }}
-          animate={{ opacity: isHiddenButton ? 0 : 1 }}
-          style={{
-            pointerEvents: isHiddenButton ? 'none' : 'auto',
-            cursor: isHiddenButton ? 'default' : 'pointer',
-          }}
-        >
-          <span>{isHovered ? t('projects.buttonHover') : t('projects.button')}</span>
-        </motion.a>
-      </div>
-    </motion.div>
-  );
-}
-
 export default function Projects() {
   const { t } = useTranslation();
-  const { controls } = useFadeOut();
 
   return (
-    <motion.section 
+    <section 
       id='projects' 
       className="projects-section"
-      initial={{ opacity: 1 }}
-      animate={controls}
     >
-      <motion.h2
-        className="projects-title"
-        initial={{ opacity: 1, y: 0 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.3 }}
-      >
+      <h2 className="projects-title">
         {t('projects.title')}
-      </motion.h2>
+      </h2>
 
-      <div className="projects-container">
-        {projects.map((proj, i) => (
-          <Hover3DCard key={i} project={proj} delay={i * 0.2} />
-        ))}
-      </div>
-    </motion.section>
+      <ProjectCarousel projects={projects} />
+    </section>
   );
 }
