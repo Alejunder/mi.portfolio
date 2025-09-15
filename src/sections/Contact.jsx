@@ -53,10 +53,10 @@ export default function Contact() {
 
     emailjs
       .sendForm(
-        "service_Alejunder",
+        "service_AleCam",
         "template_fh6pd98",
         formRef.current,
-        "46M8-6KefWP8qmvWl"
+        "yaZgarB70jJ448bk8"
       )
       .then(
         (result) => {
