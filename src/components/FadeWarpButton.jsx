@@ -57,11 +57,14 @@ const FadeWarpButton = ({ to = "/" }) => {
         className={`star-button ${launched ? "star-off" : ""}`}
         onClick={handleClick}
         disabled={launched}
-        whileHover={{ scale: 1.2 }}
-        whileTap={{ scale: 0.9 }}
+        whileHover={{ scale: 1.05 }}
+        whileTap={{ scale: 0.95 }}
         aria-label={t('certifications.viewAll')}
       >
         <div className="star-shape" />
+        <span className="star-button-text">
+          {launched ? t('certifications.launching') : t('certifications.viewAll')}
+        </span>
       </motion.button>
     </motion.div>
   );

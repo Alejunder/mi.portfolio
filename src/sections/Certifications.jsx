@@ -15,7 +15,6 @@ const Certifications = () => {
       initial={{ opacity: 1, scale: 1 }}
       animate={controls}
     >
-      <h2 className="certitle">{t('certifications.title')}</h2>
       
       <div className="certification-button-container">
         <FadeWarpButton to="/certificaciones" />

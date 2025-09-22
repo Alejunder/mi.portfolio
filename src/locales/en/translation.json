@@ -62,6 +62,7 @@
   "certifications": {
     "title": "Certifications",
     "viewAll": "View All Certifications",
+    "launching": "Launching",
     "goBack": "Go Back",
     "clickToView": "Click to view larger"
   }

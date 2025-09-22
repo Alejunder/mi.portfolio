@@ -1,192 +1,307 @@
-.certifications-section.only-button {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  min-height: 55vh;
-  padding: 0;
-  margin: 0;
-  background: transparent;
-  text-align: center;
-}
-
-.certitle {
-  font-size: 2.8rem;
-  margin-bottom:3rem;
-  text-shadow: 0 0 10px #00f0ffaa;
-  color: white;
-}
+/* Fade Warp Button - Minimalist Exotic Design */
 
 .star-warp-container {
-    padding: 3.7rem 1.7rem;
-    text-align: center;
-    color: white;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-.certifications-section.only-button {
   display: flex;
-  flex-direction: column;
   justify-content: center;
   align-items: center;
-  min-height: 55vh;
-  padding: 0;
-  margin: 0;
-  background: transparent;
-  text-align: center;
+  margin: 14rem 0 2rem 0;
+  perspective: 1000px;
 }
 
 .star-button {
   position: relative;
   background: transparent;
   border: none;
-  cursor: pointer;
-  width: 80px;
-  height: 80px;
   padding: 0;
-  outline: none;
+  cursor: pointer;
   display: flex;
-  justify-content: center;
+  flex-direction: column;
   align-items: center;
-  transition: transform 0.3s ease;
+  gap: 0.75rem;
+  transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+  transform-style: preserve-3d;
+  outline: none;
+  
+  /* Remove default button styles */
+  font-family: inherit;
+  font-size: inherit;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
 }
 
-.star-button:focus {
-  outline: 2px solid #00f0ff;
+.star-button:focus-visible {
+  outline: 2px solid rgba(255, 255, 255, 0.5);
   outline-offset: 4px;
+  border-radius: 12px;
 }
 
-.star-label {
-  position: absolute;
-  bottom: 100%;
-  left: 50%;
-  transform: translate(-50%, -4px);
-  margin-bottom: 8px;
-  font-size: 0.9rem;
-  color: #00f0ffcc;
-  font-family: "Orbitron", sans-serif;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  pointer-events: none;
-  opacity: 0;
-  transition: opacity 0.3s ease, transform 0.3s ease;
-  white-space: nowrap;
-  text-shadow: 0 0 8px #00f0ffaa;
-}
-
-.star-button:hover .star-label {
-  opacity: 1;
-  transform: translate(-50%, -6px);
-}
-
+/* Star Shape - Main Button Element */
 .star-shape {
-  width: 100%;
-  height: 100%;
-  background: radial-gradient(
-    circle at 50% 50%,
-    #00f0ffcc 0%,
-    #00d4e6bb 25%,
-    #008faabb 60%,
-    transparent 100%
+  position: relative;
+  width: 100px;
+  height: 100px;
+  background: linear-gradient(135deg, 
+    rgba(255, 255, 255, 0.1) 0%,
+    rgba(255, 255, 255, 0.05) 50%,
+    rgba(255, 255, 255, 0.02) 100%
   );
-  clip-path: polygon(
-    50% 0%,
-    61% 35%,
-    98% 35%,
-    68% 57%,
-    79% 91%,
-    50% 70%,
-    21% 91%,
-    32% 57%,
-    2% 35%,
-    39% 35%
-  );
-  box-shadow: 0 0 30px #00f0ff, 0 0 60px #00f0ff, 0 0 100px #00e6ff,
-    inset 0 0 20px #00f0ff55;
-  filter: drop-shadow(0 0 8px #00f0ff) brightness(1.4) contrast(1.2);
-  transition: transform 0.4s ease, filter 0.4s ease, box-shadow 0.4s ease;
-  animation: starPulse 2.2s ease-in-out infinite;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 50%;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+  
+  /* Inner glow effect */
+  box-shadow: 
+    inset 0 1px 0 rgba(255, 255, 255, 0.1),
+    0 0 20px rgba(255, 255, 255, 0.1),
+    0 0 40px rgba(135, 206, 250, 0.05);
 }
 
-.star-button:hover .star-shape {
-  transform: scale(1.15);
-}
-
-.star-off .star-shape {
-  background: #444;
-  box-shadow: none;
-  filter: none;
-}
-
-.warp-ring {
+/* Create the star pattern inside */
+.star-shape::before {
+  content: '';
   position: absolute;
   top: 50%;
   left: 50%;
-  width: 0;
-  height: 0;
-  background: radial-gradient(circle, #00f0ff88 20%, transparent 70%);
-  border-radius: 50%;
   transform: translate(-50%, -50%);
-  animation: warpExpand 1.2s ease-out forwards;
-  z-index: 1;
+  width: 30px;
+  height: 30px;
+  background: linear-gradient(45deg, #ffffff, #87ceeb);
+  clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+  transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+  opacity: 0.8;
+}
+
+/* Orbital ring effect */
+.star-shape::after {
+  content: '';
+  position: absolute;
+  top: -4px;
+  left: -4px;
+  right: -4px;
+  bottom: -4px;
+  border: 1px solid transparent;
+  border-radius: 50%;
+  background: linear-gradient(45deg, transparent, rgba(135, 206, 250, 0.3), transparent);
+  background-clip: border-box;
+  opacity: 0;
+  transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+  animation: rotate 8s linear infinite;
+}
+
+/* Button Text */
+.star-button-text {
+  font-size: 1rem;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.8);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+  text-align: center;
+  white-space: nowrap;
+  font-family: 'SF Pro Display', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+}
+
+/* Hover Effects */
+.star-button:hover .star-shape {
+  transform: translateY(-2px) scale(1.05);
+  background: linear-gradient(135deg, 
+    rgba(255, 255, 255, 0.15) 0%,
+    rgba(255, 255, 255, 0.08) 50%,
+    rgba(135, 206, 250, 0.05) 100%
+  );
+  border-color: rgba(135, 206, 250, 0.4);
+  box-shadow: 
+    inset 0 1px 0 rgba(255, 255, 255, 0.2),
+    0 0 30px rgba(135, 206, 250, 0.2),
+    0 0 60px rgba(135, 206, 250, 0.1),
+    0 8px 32px rgba(0, 0, 0, 0.1);
+}
+
+.star-button:hover .star-shape::before {
+  transform: translate(-50%, -50%) scale(1.1) rotate(180deg);
+  background: linear-gradient(45deg, #ffffff, #87ceeb, #4169e1);
+  opacity: 1;
+  filter: drop-shadow(0 0 8px rgba(135, 206, 250, 0.5));
+}
+
+.star-button:hover .star-shape::after {
+  opacity: 1;
+  animation-duration: 2s;
+}
+
+.star-button:hover .star-button-text {
+  color: rgba(255, 255, 255, 1);
+  transform: translateY(-1px);
+  text-shadow: 0 0 10px rgba(135, 206, 250, 0.5);
+}
+
+/* Active/Tap Effects */
+.star-button:active .star-shape {
+  transform: translateY(0) scale(0.95);
+  transition-duration: 0.1s;
+}
+
+/* Launched State */
+.star-button.star-off {
   pointer-events: none;
-  filter: blur(20px);
-  will-change: transform, opacity, width, height;
+  opacity: 0.6;
 }
 
-@keyframes warpExpand {
-  0% {
-    width: 0;
-    height: 0;
-    opacity: 1;
+.star-button.star-off .star-shape {
+  background: linear-gradient(135deg, 
+    rgba(255, 255, 255, 0.05) 0%,
+    rgba(255, 255, 255, 0.02) 100%
+  );
+  border-color: rgba(255, 255, 255, 0.1);
+  box-shadow: 
+    inset 0 1px 0 rgba(255, 255, 255, 0.05),
+    0 0 10px rgba(255, 255, 255, 0.05);
+  animation: launched-pulse 2s ease-in-out infinite;
+}
+
+.star-button.star-off .star-shape::before {
+  opacity: 0.3;
+  animation: launched-rotate 1s linear infinite;
+}
+
+.star-button.star-off .star-shape::after {
+  opacity: 0.3;
+  animation: rotate 2s linear infinite;
+}
+
+.star-button.star-off .star-button-text {
+  color: rgba(255, 255, 255, 0.5);
+  animation: launched-text 1.5s ease-in-out infinite;
+}
+
+/* Animations */
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
   }
-  100% {
-    width: 600px;
-    height: 600px;
-    opacity: 0;
+  to {
+    transform: rotate(360deg);
   }
 }
 
-@keyframes starPulse {
-  0%,
-  100% {
-    box-shadow: 0 0 30px #00f0ff, 0 0 60px #00d0ff, 0 0 100px #00e6ff,
-      inset 0 0 20px #00ffff44;
-    filter: drop-shadow(0 0 6px #00f0ff) brightness(1.3) contrast(1.2);
+@keyframes launched-pulse {
+  0%, 100% {
     transform: scale(1);
   }
   50% {
-    box-shadow: 0 0 50px #00ffff, 0 0 100px #00f0ff, 0 0 160px #00e0ff,
-      inset 0 0 40px #00f0ff77;
-    filter: drop-shadow(0 0 10px #00f0ffcc) brightness(1.6) contrast(1.5);
-    transform: scale(1.07);
+    transform: scale(1.02);
   }
 }
 
-/* Responsivo: móviles más pequeños */
-@media (max-width: 400px) {
+@keyframes launched-rotate {
+  from {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+  to {
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
+}
+
+@keyframes launched-text {
+  0%, 100% {
+    opacity: 0.5;
+  }
+  50% {
+    opacity: 0.8;
+  }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .star-shape {
+    width: 85px;
+    height: 85px;
+  }
+  
+  .star-shape::before {
+    width: 26px;
+    height: 26px;
+  }
+  
+  .star-button-text {
+    font-size: 0.9rem;
+  }
+  
+  /* Optimize for touch */
   .star-button {
-    width: 64px;
-    height: 64px;
-  }
-
-  .star-label {
-    font-size: 0.75rem;
+    min-height: 44px;
+    min-width: 44px;
   }
 }
 
-/* Desktop: mostrar texto en hover */
-@media (hover: hover) and (pointer: fine) {
-  .star-button:hover .star-label {
-    opacity: 1;
-    transform: translate(-50%, -6px);
+@media (max-width: 480px) {
+  .star-warp-container {
+    margin: 11rem 0 2rem 0;
+  }
+  
+  .star-shape {
+    width: 75px;
+    height: 75px;
+  }
+  
+  .star-shape::before {
+    width: 22px;
+    height: 22px;
+  }
+  
+  .star-button-text {
+    font-size: 0.85rem;
+    letter-spacing: 0.05em;
   }
 }
 
-/* Móvil: mostrar siempre el texto */
-@media (hover: none) and (pointer: coarse) {
-  .star-label {
-    opacity: 1;
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  .star-shape {
+    border-color: rgba(255, 255, 255, 0.6);
+    background: rgba(255, 255, 255, 0.1);
   }
+  
+  .star-button-text {
+    color: rgba(255, 255, 255, 0.9);
+  }
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  .star-button,
+  .star-shape,
+  .star-shape::before,
+  .star-shape::after,
+  .star-button-text {
+    animation: none;
+    transition-duration: 0.1s;
+  }
+  
+  .star-button:hover .star-shape::before {
+    transform: translate(-50%, -50%) scale(1.1);
+  }
+}
+
+/* Dark mode optimization */
+@media (prefers-color-scheme: dark) {
+  .star-shape {
+    background: linear-gradient(135deg, 
+      rgba(255, 255, 255, 0.08) 0%,
+      rgba(255, 255, 255, 0.04) 50%,
+      rgba(255, 255, 255, 0.01) 100%
+    );
+  }
+}
+
+/* Loading state for better UX */
+.star-button.loading .star-shape::before {
+  animation: rotate 1s linear infinite;
+}
+
+.star-button.loading .star-button-text {
+  animation: launched-text 1s ease-in-out infinite;
 }

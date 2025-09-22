@@ -59,6 +59,7 @@
   "certifications": {
     "title": "Certificaciones",
     "viewAll": "Ver Todas las Certificaciones",
+    "launching": "Despegando",
     "goBack": "Volver",
     "clickToView": "Clic para ampliar"
   }
