@@ -172,7 +172,7 @@
 
 .certifications-fadewarpbutton {
   position: absolute;
-  margin-top: 43rem;
+  margin-top: 33rem;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -242,7 +242,7 @@
 
   .certifications-fadewarpbutton {
     position: absolute;
-    margin-top: 56rem;
+    margin-top: 28rem;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -267,12 +267,18 @@
   }
 
   .certifications-fadewarpbutton {
-    margin-top: 40.5rem;
+    margin-top: 31.5rem;
   }
 }
 
 @media (max-width: 412px) {
   .certifications-fadewarpbutton {
-    margin-top: 42rem;
+    margin-top: 30rem;
+  }
+} 
+
+@media (max-width: 540px) {
+  .certifications-fadewarpbutton {
+    margin-top: 32rem;
   }
 }
