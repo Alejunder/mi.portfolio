@@ -4,9 +4,24 @@
  */
 
 import { useTranslation } from 'react-i18next';
+import { useEffect } from 'react';
+import { languageStore } from '../../stores/languageStore';
+import { createImmersiveMode } from '../../modules/immersiveModeLogic';
+
+const immersiveMode = createImmersiveMode();
 
 export default function SceneOverlay({ onClose }) {
   const { t } = useTranslation();
+
+  useEffect(() => {
+    // Reproducir audio de bienvenida después de que terminen las instrucciones (15s)
+    const audioTimer = setTimeout(() => {
+      const currentLanguage = languageStore.getLanguage();
+      immersiveMode.playWelcomeAudio(currentLanguage);
+    }, 11000); // 11 segundos, igual que la animación instructionsFadeInOut
+
+    return () => clearTimeout(audioTimer);
+  }, []);
 
   return (
     <>

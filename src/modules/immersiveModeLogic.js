@@ -18,6 +18,27 @@ export const createImmersiveMode = () => {
     isLocked = false;
   };
 
+  /**
+   * Reproduce audio de bienvenida según el idioma
+   * @param {string} language - Idioma actual ('es' o 'en')
+   */
+  const playWelcomeAudio = (language) => {
+    try {
+      // Seleccionar el audio según el idioma
+      const audioFile = language === 'es' 
+        ? '/src/assets/audioale.mp3'
+        : '/src/assets/audionmorgan.mp3';
+      
+      const audio = new Audio(audioFile);
+      audio.volume = 0.7;
+      audio.play().catch((err) => {
+        console.log('Audio playback prevented:', err);
+      });
+    } catch (error) {
+      console.log('Error playing welcome audio:', error);
+    }
+  };
+
   const getRowDepth = (rowIndex) => {
     if (rowIndex === 0) return -4;
     if (rowIndex === 1) return -1.5;
@@ -37,6 +58,7 @@ export const createImmersiveMode = () => {
     lockScroll,
     unlockScroll,
     getRowDepth,
-    calculatePosition
+    calculatePosition,
+    playWelcomeAudio
   };
 };
