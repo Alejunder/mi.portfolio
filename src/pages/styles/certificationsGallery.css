@@ -245,6 +245,12 @@
   }
 }
 
+@media (max-width: 540px) {
+  .certifications-fadewarpbutton {
+    margin-top: 32rem;
+  }
+}
+
 @media (max-width: 480px) {
   .gallery-title {
     font-size: 1.8rem;
@@ -270,11 +276,5 @@
 @media (max-width: 412px) {
   .certifications-fadewarpbutton {
     margin-top: 30rem;
-  }
-} 
-
-@media (max-width: 540px) {
-  .certifications-fadewarpbutton {
-    margin-top: 32rem;
   }
 }
