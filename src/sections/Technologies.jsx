@@ -1,6 +1,6 @@
 import { useTranslation } from 'react-i18next';
 import NebulaPortal from '../components/3d/NebulaPortal';
-import './styles/tecnologies.css';
+import './styles/Tecnologies.css';
 
 export default function Technologies() {
   const { t } = useTranslation();

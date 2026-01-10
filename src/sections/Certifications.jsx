@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import { useFadeOut } from "../context/FadeOutContext";
 import FadeWarpButton from "../components/FadeWarpButton";
-import "./styles/certifications.css";
+import "./styles/Certifications.css";
 
 const Certifications = () => {
   const { controls } = useFadeOut();
