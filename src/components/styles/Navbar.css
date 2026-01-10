@@ -1,0 +1,157 @@
+.navbar {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 999;
+  transition: top 0.3s;
+  backdrop-filter: blur(10px);
+  background-color: rgba(13, 13, 13, 0.6);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.navbar-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 1rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.navbar-logo {
+  width: 150px;
+  object-fit: contain;
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 2rem;
+  margin-top: 20px;
+}
+
+.nav-links a {
+  color: #ccc;
+  font-size: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  transition: all 0.3s ease;
+  text-decoration: none;
+  padding-bottom: 2px;
+}
+
+.nav-links a:hover {
+  color: #30a2b6;
+}
+
+.nav-links a.active {
+  color: #30a2b6;
+  font-weight: bold;
+  text-shadow: 0 0 8px rgba(48, 162, 182, 0.7);
+  border-bottom: 2px solid #30a2b6;
+}
+
+.navbar.hide {
+  top: -100px;
+}
+
+.navbar.show {
+  top: 0;
+}
+
+.back-to-top {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background: #00ffff;
+  color: #0d0d0d;
+  border: none;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  font-size: 1.2rem;
+  cursor: pointer;
+  z-index: 998;
+  opacity: 0.8;
+  transition: all 0.3s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.back-to-top:hover {
+  opacity: 1;
+  transform: scale(1.1);
+  box-shadow: 0 0 15px rgba(0, 255, 255, 0.5);
+}
+
+.menu-toggle {
+  display: none;
+  background: none;
+  border: none;
+  color: white;
+  font-size: 1.8rem;
+  cursor: pointer;
+  padding: 0.5rem;
+}
+
+.lang-switch {
+  background: transparent;
+  color: #0ff;
+  border: 2px solid #0ff;
+  border-radius: 8px;
+  padding: 0.3rem 0.75rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-bottom: 15px;
+}
+
+
+.lang-switch:hover {
+  background-color: #0ff;
+  color: #000;
+  box-shadow: 0 0 10px #0ff;
+  transform: translateY(-5px);
+}
+
+@media (max-width: 968px) {
+  .menu-toggle {
+    display: block;
+    z-index: 999;
+  }
+
+  .nav-links {
+    position: fixed;
+    top: 80px;
+    left: 0;
+    width: 100%;
+    background: rgba(13, 13, 13, 0.98);
+    flex-direction: column;
+    align-items: center;
+    clip-path: circle(0px at 90% -10%);
+    transition: clip-path 0.5s ease;
+    pointer-events: none;
+    gap: 1rem;
+  }
+
+  .nav-links.mobile-active {
+    clip-path: circle(150% at 90% -10%);
+    pointer-events: all;
+  }
+
+  .nav-links li {
+    width: 100%;
+    text-align: center;
+  }
+
+  .nav-links a {
+    display: block;
+    padding: 1rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  .lang-switch {
+    margin: 1rem 2rem 2rem 1rem;
+  }
+}

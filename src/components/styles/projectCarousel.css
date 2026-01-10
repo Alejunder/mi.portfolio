@@ -1,0 +1,318 @@
+.project-carousel {
+    position: relative;
+    width: 100%;
+    max-width: 700px;
+    margin: 0 auto;
+    padding: 4rem 0;
+    perspective: 1200px;
+}
+
+.carousel-container {
+    position: relative;
+    overflow: visible;
+    height: 100%;
+    min-height: 200px;
+    width: 100%;
+}
+
+.carousel-track {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transform-style: preserve-3d;
+    perspective: 1200px;
+}
+
+.carousel-card {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    max-width: 640px;
+    margin: 0 auto;
+    transition: all 0.8s cubic-bezier(0.165, 0.84, 0.44, 1);
+    transform-origin: center center;
+    backface-visibility: hidden;
+    box-sizing: border-box;
+}
+
+.carousel-project-description {
+    color: white;
+}
+
+.carousel-card.active {
+    z-index: 3;
+    cursor: pointer;
+}
+
+.carousel-card.visible {
+    visibility: visible;
+}
+
+.carousel-card:not(.visible) {
+    visibility: hidden;
+}
+
+.carousel-navigation {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    position: absolute;
+    top: 50%;
+    left: 0;
+    z-index: 20;
+    pointer-events: none; /* This ensures clicks pass through to content beneath */
+}
+
+.carousel-btn {
+  position: relative;
+    transform: translateY(-50%);
+    z-index: 10;
+    background: rgba(0, 255, 255, 0.2);
+    border: 1px solid rgba(0, 255, 255, 0.5);
+    color: #0ff;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    font-size: 1.5rem;
+    font-weight: bold;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(5px);
+  pointer-events: auto;
+  margin: 0 -35px;
+}
+
+.carousel-btn:hover {
+    background: rgba(0, 255, 255, 0.4);
+    box-shadow: 0 0 15px rgba(0, 255, 255, 0.6);
+    transform: translateY(-50%) scale(1.1);
+}
+
+.carousel-btn-prev {
+    left: -115px;
+}
+
+.carousel-btn-next {
+    right: -115px;
+}
+
+.carousel-dots {
+    display: flex;
+    justify-content: center;
+    margin-top: 3.5rem;
+    gap: 0.8rem;
+    position: relative;
+    z-index: 100;
+}
+
+.carousel-dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    border: none;
+    background-color: rgba(0, 255, 255, 0.3);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    padding: 0;
+}
+
+.carousel-dot.active {
+    background-color: #0ff;
+    box-shadow: 0 0 12px rgba(0, 255, 255, 0.8);
+    transform: scale(1.3);
+}
+
+.carousel-card .project-content {
+    opacity: 1;
+    transition: opacity 0.5s ease;
+}
+
+.carousel-card:not(.active) .project-content {
+    opacity: 0.7;
+}
+
+.carousel-card.active .project-content h3 {
+    font-size: 1.6rem;
+}
+
+.carousel-card:not(.active) .project-content h3 {
+    font-size: 1.3rem;
+}
+
+@media (max-width: 968px) {
+    .project-carousel {
+        padding: 3rem 0;
+        perspective: 1000px;
+    }
+    
+    .carousel-container {
+        min-height: 350px;
+    }
+    
+    .carousel-card {
+        max-width: 700px;
+    }
+    
+    .carousel-btn {
+        width: 40px;
+        height: 40px;
+        font-size: 1.3rem;
+        margin: 0 -20px;
+    }
+    
+    .carousel-navigation {
+        width: 108%;
+        left: -4%;
+    }
+}
+
+@media (max-width: 768px) {
+    .project-carousel {
+        padding: 2rem 1rem;
+    }
+    
+    .carousel-container {
+        min-height: 320px;
+    }
+    
+    .carousel-card {
+        max-width: 90%;
+    }
+    
+    .carousel-navigation {
+        width: 115%;
+        left: -7.5%;
+    }
+    
+    .carousel-btn {
+        width: 42px;
+        height: 42px;
+        font-size: 1.25rem;
+    }
+}
+
+@media (max-width: 768px) and (min-width: 481px) {
+    .carousel-card {
+        max-width: 85%;
+    }
+    
+    .carousel-card.active .project-content h3 {
+        font-size: 1.5rem;
+    }
+    
+    .carousel-card .project-content p {
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .project-carousel {
+        padding: 1.5rem 0;
+        perspective: none !important;
+        max-width: 100%;
+        overflow-x: hidden;
+    }
+    
+    .carousel-container {
+        min-height: auto;
+        overflow: hidden;
+        overflow-x: hidden;
+        padding: 0 1rem;
+    }
+    
+    .carousel-track {
+        transform-style: flat !important;
+        perspective: none !important;
+        position: relative;
+        min-height: 350px;
+    }
+    
+    .carousel-card {
+        max-width: 100%;
+        position: relative !important;
+        left: 0 !important;
+        right: 0 !important;
+        margin: 0 auto;
+    }
+    
+    .carousel-card:not(.active) {
+        display: none !important;
+    }
+    
+    .carousel-card.active {
+        transform: none !important;
+        position: relative !important;
+        opacity: 1 !important;
+        visibility: visible !important;
+        display: block !important;
+    }
+    
+    .carousel-navigation {
+        position: relative !important;
+        width: 100%;
+        left: 0 !important;
+        top: 0 !important;
+        padding: 0;
+        margin-top: 1.5rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 3rem;
+        pointer-events: auto;
+        transform: none !important;
+    }
+    
+    .carousel-btn-prev,
+    .carousel-btn-next {
+        position: relative !important;
+        left: auto !important;
+        right: auto !important;
+        transform: none !important;
+    }
+    
+    .carousel-btn {
+        position: relative !important;
+        transform: none !important;
+        margin: 0 !important;
+        left: auto !important;
+        right: auto !important;
+        width: 45px;
+        height: 45px;
+        font-size: 1.2rem;
+        background: rgba(0, 255, 255, 0.25);
+        border: 2px solid rgba(0, 255, 255, 0.6);
+    }
+    
+    .carousel-btn:hover {
+        transform: scale(1.05) !important;
+        background: rgba(0, 255, 255, 0.4);
+    }
+    
+    .carousel-dots {
+        margin-top: 1.5rem;
+        gap: 0.6rem;
+    }
+    
+    .carousel-dot {
+        width: 10px;
+        height: 10px;
+    }
+    
+    .carousel-dot.active {
+        transform: scale(1.2);
+    }
+    
+    .carousel-card .project-content h3 {
+        font-size: 1.4rem !important;
+    }
+    
+    .carousel-card .project-content p {
+        font-size: 0.95rem;
+        line-height: 1.5;
+    }
+}

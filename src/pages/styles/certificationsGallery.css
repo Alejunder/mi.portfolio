@@ -1,0 +1,280 @@
+.certifications-page {
+  padding: 4rem 2rem;
+  text-align: center;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.gallery-title {
+  font-size: 2.8rem;
+  margin-bottom: 2rem;
+  text-shadow: 0 0 10px #00f0ffaa;
+}
+
+.cert-list {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 2.5rem;
+}
+
+.cert-title-btn {
+  font-size: 0.9rem;
+  background: transparent;
+  color: white;
+  border: none;
+  cursor: pointer;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  padding: 0.5rem 0.8rem;
+  transition: all 0.3s ease;
+  border-bottom: 1px solid transparent;
+}
+
+.cert-title-btn:hover,
+.cert-title-btn.active {
+  color: #00f0ff;
+  border-bottom: 1px solid #00f0ff;
+}
+
+.cert-display {
+  position: relative;
+  min-height: 300px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.cert-preview {
+  background: transparent rgb(3, 19, 29);
+  padding: 1rem;
+  border-radius: 12px;
+  box-shadow: 0 15px 40px rgba(0, 255, 255, 0.2);
+  width: 500px;
+  max-width: 90vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.cert-image {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.btn-2 {
+  margin-top: 20px;
+  position: relative;
+  letter-spacing: 1;
+  text-align: center;
+  color: white;
+  display: inline-block;
+  padding: 12px 24px;
+  transition: letter-spacing 0.3s ease-in-out;
+  font-size: 1.2rem;
+}
+
+.btn-2:hover,
+.btn-2:active {
+  letter-spacing: 5px;
+}
+
+.btn-2::before,
+.btn-2::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 1px;
+  background-color: white;
+  transition: width 350ms ease-in-out;
+}
+
+.btn-2::before {
+  top: -8px;
+}
+
+.btn-2::after {
+  bottom: 8px;
+}
+
+.btn-2:hover::before,
+.btn-2:hover::after {
+  width: 70%;
+}
+
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 999;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-content {
+  position: relative;
+  background: rgb(255, 255, 255);
+  border-radius: 12px;
+  padding: 1rem;
+  box-shadow: 0 15px 50px rgba(0, 255, 255, 0.2);
+  width: 700px;
+  max-width: 90vw;
+  max-height: 90vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow: auto;
+}
+
+.modal-content img {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+}
+
+.close-btn {
+  position: absolute;
+  top: 30px;
+  right: 50px;
+  background: transparent;
+  border: none;
+  font-size: 2rem;
+  color: #00f0ff;
+  cursor: pointer;
+  z-index: 2;
+}
+
+.close-btn::before {
+  content: "";
+  position: absolute;
+  top: calc(50% + 2px);
+  left: 50%;
+  width: 30px;
+  height: 30px;
+  border: 2px solid #00f0ff;
+  border-radius: 50%;
+  transform: translate(-50%, -50%) scale(0.9);
+  animation: pulseRing 2s infinite ease-in-out;
+  z-index: -1;
+  opacity: 0.6;
+}
+
+.certifications-fadewarpbutton {
+  position: absolute;
+  margin-top: 33rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@keyframes pulseRing {
+  0% {
+    transform: translate(-50%, -50%) scale(0.9);
+    opacity: 0.6;
+  }
+  50% {
+    transform: translate(-50%, -50%) scale(1.15);
+    opacity: 0.2;
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(0.9);
+    opacity: 0.6;
+  }
+}
+
+@media (max-width: 1023px) {
+  .gallery-title {
+    font-size: 2.2rem;
+  }
+
+  .cert-list {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.8rem;
+  }
+
+  .cert-title-btn {
+    font-size: 0.8rem;
+    padding: 0.4rem 0.6rem;
+  }
+
+  .cert-preview {
+    width: 90vw;
+    padding: 0.8rem;
+  }
+
+  .caption {
+    font-size: 1rem;
+  }
+
+  .modal-content {
+    width: 90vw;
+    padding: 0.8rem;
+  }
+
+  .close-btn {
+    font-size: 1.7rem;
+    top: 29px;
+    right: 39px;
+  }
+
+  .close-btn::before {
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    top: calc(50% - 2px);
+    left: 50%;
+  }
+
+  .certifications-fadewarpbutton {
+    position: absolute;
+    margin-top: 28rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .gallery-title {
+    font-size: 1.8rem;
+  }
+
+  .cert-title-btn {
+    font-size: 0.75rem;
+  }
+
+  .caption {
+    font-size: 0.95rem;
+  }
+
+  .star-warp-container {
+    padding: 2rem 1rem;
+  }
+
+  .certifications-fadewarpbutton {
+    margin-top: 31.5rem;
+  }
+}
+
+@media (max-width: 412px) {
+  .certifications-fadewarpbutton {
+    margin-top: 30rem;
+  }
+} 
+
+@media (max-width: 540px) {
+  .certifications-fadewarpbutton {
+    margin-top: 32rem;
+  }
+}

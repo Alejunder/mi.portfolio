@@ -1,0 +1,138 @@
+.project-btn-futuristic {
+    display: inline-block;
+    margin-top: 1.5rem;
+    padding: 0.75rem 1.5rem;
+    font-size: 1rem;
+    font-weight: 600;
+    color: #0ff;
+    background: transparent;
+    border: 2px solid #0ff;
+    border-radius: 12px;
+    text-transform: uppercase;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    z-index: 0;
+    text-decoration: none;
+}
+
+.project-btn-futuristic::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 300%;
+    height: 300%;
+    background: radial-gradient(circle, #0ff, #00f, transparent);
+    transition: all 0.5s ease;
+    transform: translate(-50%, -50%) scale(0);
+    border-radius: 50%;
+    z-index: -1;
+    opacity: 0.4;
+}
+
+.project-btn-futuristic:hover::before {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 1;
+}
+
+.project-btn-futuristic:hover {
+    color: #000;
+    background-color: #0ff;
+    box-shadow: 0 0 20px #0ff;
+    border-color: #0ff;
+}
+
+.project-card-alt {
+    background: rgba(255, 255, 255, 0.02);
+    border-radius: 16px;
+    padding: 2rem;
+    margin: 1.5rem auto;
+    max-width: 100%;
+    box-sizing: border-box;
+    box-shadow: 0 0 30px rgba(0, 255, 255, 0.1);
+    transition: box-shadow 0.3s ease, transform 0.2s ease;
+    backdrop-filter: blur(8px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.project-card-alt:hover {
+    box-shadow: 0 0 40px rgba(0, 255, 255, 0.25);
+}
+
+.projects-section {
+    margin-top: 60px;
+}
+
+.projects-title {
+    text-align: center;
+    font-size: 2rem;
+    margin-bottom: 2rem;
+    font-family: 'CentimaMonoW01', sans-serif;
+    color: cyan;
+}
+
+@media (max-width: 968px) {
+    .project-btn-futuristic {
+        padding: 0.65rem 1.25rem;
+        font-size: 0.9rem;
+        margin-top: 1.2rem;
+    }
+
+    .project-card-alt {
+        padding: 1.5rem;
+        margin: 1.2rem auto;
+        border-radius: 14px;
+        max-width: 100%;
+        box-sizing: border-box;
+    }
+
+    .projects-title {
+        font-size: 1.8rem;
+        margin-bottom: 1.5rem;
+    }
+
+    @media (hover: none) {
+        .project-btn-futuristic:hover::before {
+            transform: translate(-50%, -50%) scale(0);
+            opacity: 0.4;
+        }
+        
+        .project-btn-futuristic:active::before {
+            transform: translate(-50%, -50%) scale(1);
+            opacity: 1;
+        }
+    }
+}
+
+@media (max-width: 480px) {
+
+    .project-btn-futuristic {
+        padding: 0.6rem 1.2rem;
+        font-size: 0.85rem;
+        margin-top: 1.2rem;
+        border-radius: 10px;
+        border-width: 2px;
+    }
+
+    .project-card-alt {
+        padding: 1.5rem 1.2rem;
+        margin: 0 auto;
+        border-radius: 12px;
+        backdrop-filter: blur(6px);
+        box-shadow: 0 0 10px rgba(0, 255, 255, 0.1);
+        max-width: 100%;
+        box-sizing: border-box;
+    }
+
+    .projects-title {
+        font-size: 1.7rem;
+        margin-bottom: 1.5rem;
+    }
+
+    @media (hover: none) {
+        .project-btn-futuristic:active {
+            transform: scale(0.95);
+        }
+    }
+}

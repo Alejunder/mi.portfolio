@@ -1,0 +1,33 @@
+.certifications-section {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 20px;
+  position: relative;
+}
+
+.certifications-section.only-button {
+  padding-top: 0;
+}
+
+.certification-button-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+@media (max-width: 768px) {
+  .certifications-section {
+    padding: 30px 16px;
+  }
+}
+
+@media (max-width: 480px) {
+  .certifications-section {
+    padding: 20px 12px;
+  }
+}

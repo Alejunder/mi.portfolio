@@ -1,0 +1,92 @@
+{
+  "nav": {
+    "home": "inicio",
+    "about": "sobre mi",
+    "technologies": "tecnologías",
+    "projects": "proyectos",
+    "certifications": "certificaciones",
+    "contact": "contacto"
+  }, 
+     
+  "hero": {
+    "greeting": "Hola, soy Alejandro Camayo",
+    "title": "Desarrollador Web de Software"
+  },
+
+  "about": {
+    "title": "Sobre mí",
+    "description": "Especializado en desarrollo web, trabajo con tecnologías modernas para crear proyectos con una UI atractiva y una infraestructura robusta.\n\nCollaboro con marcas, emprendedores y negocios etc., que buscan destacar mediante un software profesional y bien construido.\n\nAl trabajar conmigo, podrás ver tu idea digitalizada e incluso potenciada, gracias a una comunicación clara y una sólida mentalidad de producto, orientada a ofrecer soluciones efectivas y escalables.\n\nSi tienes un proyecto en mente y quieres hacerlo despegar, acabas de encontrar tu mejor opción."
+  },
+  
+  "skills": {
+    "title": "Mis habilidades",
+    "loading": "Cargando habilidades...",
+    "iaTools": "Herramientas de IA",
+    "frontend": "Frontend",
+    "backend": "Backend"
+  },
+
+  "technologies": {
+    "title": "Tecnologías",
+    "languages": "Lenguajes",
+    "frameworks": "Frameworks y Tooling",
+    "runtime": "Entorno de Ejecución Backend",
+    "databases": "Bases de Datos",
+    "baas": "Plataformas Backend as a Service",
+    "automation": "Automatización e Integraciones",
+    "versionControl": "Control de Versiones y Colaboración",
+    "cloudData": "Plataformas Cloud de Datos"
+  },
+  
+  "projects": {
+    "title": "Proyectos Destacados",
+    "button": "🚀 Ver proyecto",
+    "buttonHover": "Despegando... 🚀",
+    "project1": {
+      "title": "En desarrollo...",
+      "description": "Proyecto para una empresa de arquitectura."
+    },
+    "project2": {
+      "title": "Plantilla de una tienda de productos",
+      "description": "Sistema fullstack de una tienda donde puedes crear, actualizar y eliminar productos."
+    },
+    "project3": {
+      "title": "Moodbeatshub",
+      "description": "Moodbeatshub es un sistema que genera playlists personalizadas según el estado de ánimo del usuario. Actualmente, funciona exclusivamente con el proveedor Spotify."
+    }
+  },
+  
+  "contact": {
+    "title": "Contáctame",
+    "form": {
+      "name": "Tu nombre",
+      "email": "Tu email",
+      "message": "Tu mensaje"
+    },
+    "button": "🚀 Enviar",
+    "success": "¡Mensaje enviado con éxito!",
+    "error": "Hubo un error, intenta de nuevo."
+  },
+
+  "certifications": {
+    "title": "Certificaciones",
+    "viewAll": "Ver Todas las Certificaciones",
+    "launching": "Despegando",
+    "goBack": "Volver",
+    "clickToView": "Clic para ampliar"
+  },
+
+  "sceneOverlay": {
+    "title": "Cómo moverse",
+    "title-mobile": "Móvil ",
+    "mobile": "Zoom para acercar o alejar. Desliza el dedo hacia la derecha o izquierda para moverte.",
+    "title-computer": "Ordenador ",
+    "computer": "Usa el scroll para avanzar o retroceder. Mantén clic y arrastra para girar a la derecha o izquierda.",
+    "exit": "Salir"
+  },
+
+  "nebulaPortal": {
+    "enter-click": "Doble clic para entrar",
+    "confirm-click": "¡Haz clic de nuevo!"
+  }
+}

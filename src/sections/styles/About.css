@@ -1,0 +1,58 @@
+.about-section {
+  min-height: 100vh;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 20px;
+  box-sizing: border-box;
+  perspective: 1500px;
+}
+
+.about-card {
+  max-width: 800px;
+  padding: 40px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 20px;
+  box-shadow: 0 0 20px rgba(0, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  transform-style: preserve-3d;
+}
+
+.about-title {
+  font-size: 36px;
+  color: cyan;
+  text-align: center;
+  margin-bottom: 20px;
+  letter-spacing: 1px;
+  font-family: 'CentimaMonoW01', sans-serif;
+}
+
+.about-text {
+  font-size: 20px;
+  color: #ccc;
+  line-height: 1.7;
+  text-align: left;
+  white-space: pre-line;
+}
+
+.about-tilt-wrapper {
+  will-change: transform;
+}
+
+@media (max-width: 768px) {
+  .about-card {
+    padding: 20px;
+  }
+
+  .about-title {
+    font-size: 28px;
+  }
+
+  .about-text {
+    font-size: 12px;
+  }
+}
+  
+  

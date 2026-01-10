@@ -1,0 +1,18 @@
+@font-face {
+    font-family: 'CentimaMonoW01';
+    src: url('CentimaMonoW01-Regular.woff2') format('woff2'),
+        url('CentimaMonoW01-Regular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'DejaVu Serif';
+    src: url('DejaVuSerif.woff2') format('woff2'),
+        url('DejaVuSerif.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+

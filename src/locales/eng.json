@@ -1,0 +1,95 @@
+{
+  "nav": {
+    "home": "home",
+    "about": "about",
+    "technologies": "technologies",
+    "projects": "projects",
+    "certifications": "certifications",
+    "contact": "contact"
+  },
+
+  
+  "hero": {
+    "greeting": "Hi, I'm Alejandro Camayo",
+    "title": "Software Web Developer"
+  },
+  
+  "about": {
+    "title": "About Me",
+    "description": "Specialising in web development, working with modern technologies to create projects with an attractive UI and robust infrastructure.\n\nI collaborate with brands, entrepreneurs, businesses, etc., who seek to stand out through professional, well-built software.\n\nBy working with me, you will see your idea digitised and even enhanced, thanks to clear communication and a solid product mindset, focused on offering effective and scalable solutions.\n\nIf you have a project in mind and want to get it off the ground, you've just found your best option."
+  },
+
+  
+  "skills": {
+    "title": "My Skills",
+    "loading": "Loading skills...",
+    "iaTools": "AI Tools",
+    "frontend": "Frontend",
+    "backend": "Backend"
+  },
+
+  "technologies": {
+    "title": "Technologies",
+    "languages": "Languages",
+    "frameworks": "Frameworks & Tooling",
+    "runtime": "Backend Runtime Environment",
+    "databases": "Databases",
+    "baas": "Backend as a Service Platforms",
+    "automation": "Automation & Integrations",
+    "versionControl": "Version Control & Collaboration",
+    "cloudData": "Cloud Data Platforms"
+  },
+  
+  "projects": {
+    "title": "Featured Projects",
+    "button": "🚀 View project",
+    "buttonHover": "Launching... 🚀",
+    "project1": {
+      "title": "Under development...",
+      "description": "Project for an architecture firm."
+    },
+    "project2": {
+      "title": "Product store template",
+      "description": "Full-stack system for a shop where you can create, update, and delete products."
+    },
+    "project3": {
+      "title": "Moodbeatshub",
+      "description": "Moodbeatshub is a system that generates personalised playlists based on the user's mood. It currently works exclusively with Spotify."
+    }
+  },
+
+  
+  "contact": {
+    "title": "Contact Me",
+    "form": {
+      "name": "Your name",
+      "email": "Your email",
+      "message": "Your message"
+    },
+    "button": "🚀 Send",
+    "success": "Message sent successfully!",
+    "error": "Error, please try again."
+  },
+
+  "certifications": {
+    "title": "Certifications",
+    "viewAll": "View All Certifications",
+    "launching": "Launching",
+    "goBack": "Go Back",
+    "clickToView": "Click to view larger"
+  },
+
+  "sceneOverlay": {
+    "title": "How to move around",
+    "title-mobile": "Mobile ",
+    "mobile": "Zoom in or out. Swipe right or left to move around.",
+    "title-computer": "Computer ",
+    "computer": "Use the scroll wheel to move forward or backward. Hold down and drag to turn right or left.",
+    "exit": "Exit"
+  },
+
+  "nebulaPortal": {
+    "enter-click": "Double click to enter",
+    "confirm-click": "Click again!"
+  }
+}

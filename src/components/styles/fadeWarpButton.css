@@ -1,0 +1,290 @@
+.star-warp-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 14rem 0 2rem 0;
+  perspective: 1000px;
+}
+
+.star-button {
+  position: relative;
+  background: transparent;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+  transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+  transform-style: preserve-3d;
+  outline: none;
+  
+  font-family: inherit;
+  font-size: inherit;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+
+.star-button:focus-visible {
+  outline: 2px solid rgba(255, 255, 255, 0.5);
+  outline-offset: 4px;
+  border-radius: 12px;
+}
+
+.star-shape {
+  position: relative;
+  width: 100px;
+  height: 100px;
+  background: linear-gradient(135deg, 
+    rgba(255, 255, 255, 0.1) 0%,
+    rgba(255, 255, 255, 0.05) 50%,
+    rgba(255, 255, 255, 0.02) 100%
+  );
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 50%;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+  
+  box-shadow: 
+    inset 0 1px 0 rgba(255, 255, 255, 0.1),
+    0 0 20px rgba(255, 255, 255, 0.1),
+    0 0 40px rgba(135, 206, 250, 0.05);
+}
+
+.star-shape::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 30px;
+  height: 30px;
+  background: linear-gradient(45deg, #ffffff, #87ceeb);
+  clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+  transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+  opacity: 0.8;
+}
+
+.star-shape::after {
+  content: '';
+  position: absolute;
+  top: -4px;
+  left: -4px;
+  right: -4px;
+  bottom: -4px;
+  border: 1px solid transparent;
+  border-radius: 50%;
+  background: linear-gradient(45deg, transparent, rgba(135, 206, 250, 0.3), transparent);
+  background-clip: border-box;
+  opacity: 0;
+  transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+  animation: rotate 8s linear infinite;
+}
+
+.star-button-text {
+  font-size: 1rem;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.8);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+  text-align: center;
+  white-space: nowrap;
+  font-family: 'SF Pro Display', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+}
+
+.star-button:hover .star-shape {
+  transform: translateY(-2px) scale(1.05);
+  background: linear-gradient(135deg, 
+    rgba(255, 255, 255, 0.15) 0%,
+    rgba(255, 255, 255, 0.08) 50%,
+    rgba(135, 206, 250, 0.05) 100%
+  );
+  border-color: rgba(135, 206, 250, 0.4);
+  box-shadow: 
+    inset 0 1px 0 rgba(255, 255, 255, 0.2),
+    0 0 30px rgba(135, 206, 250, 0.2),
+    0 0 60px rgba(135, 206, 250, 0.1),
+    0 8px 32px rgba(0, 0, 0, 0.1);
+}
+
+.star-button:hover .star-shape::before {
+  transform: translate(-50%, -50%) scale(1.1) rotate(180deg);
+  background: linear-gradient(45deg, #ffffff, #87ceeb, #4169e1);
+  opacity: 1;
+  filter: drop-shadow(0 0 8px rgba(135, 206, 250, 0.5));
+}
+
+.star-button:hover .star-shape::after {
+  opacity: 1;
+  animation-duration: 2s;
+}
+
+.star-button:hover .star-button-text {
+  color: rgba(255, 255, 255, 1);
+  transform: translateY(-1px);
+  text-shadow: 0 0 10px rgba(135, 206, 250, 0.5);
+}
+
+.star-button:active .star-shape {
+  transform: translateY(0) scale(0.95);
+  transition-duration: 0.1s;
+}
+
+.star-button.star-off {
+  pointer-events: none;
+  opacity: 0.6;
+}
+
+.star-button.star-off .star-shape {
+  background: linear-gradient(135deg, 
+    rgba(255, 255, 255, 0.05) 0%,
+    rgba(255, 255, 255, 0.02) 100%
+  );
+  border-color: rgba(255, 255, 255, 0.1);
+  box-shadow: 
+    inset 0 1px 0 rgba(255, 255, 255, 0.05),
+    0 0 10px rgba(255, 255, 255, 0.05);
+  animation: launched-pulse 2s ease-in-out infinite;
+}
+
+.star-button.star-off .star-shape::before {
+  opacity: 0.3;
+  animation: launched-rotate 1s linear infinite;
+}
+
+.star-button.star-off .star-shape::after {
+  opacity: 0.3;
+  animation: rotate 2s linear infinite;
+}
+
+.star-button.star-off .star-button-text {
+  color: rgba(255, 255, 255, 0.5);
+  animation: launched-text 1.5s ease-in-out infinite;
+}
+
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes launched-pulse {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.02);
+  }
+}
+
+@keyframes launched-rotate {
+  from {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+  to {
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
+}
+
+@keyframes launched-text {
+  0%, 100% {
+    opacity: 0.5;
+  }
+  50% {
+    opacity: 0.8;
+  }
+}
+
+@media (max-width: 768px) {
+  .star-shape {
+    width: 85px;
+    height: 85px;
+  }
+  
+  .star-shape::before {
+    width: 26px;
+    height: 26px;
+  }
+  
+  .star-button-text {
+    font-size: 0.9rem;
+  }
+  
+  .star-button {
+    min-height: 44px;
+    min-width: 44px;
+  }
+}
+
+@media (max-width: 480px) {
+  .star-warp-container {
+    margin: 6.5rem 0 2rem 0;
+  }
+  
+  .star-shape {
+    width: 75px;
+    height: 75px;
+  }
+  
+  .star-shape::before {
+    width: 22px;
+    height: 22px;
+  }
+  
+  .star-button-text {
+    font-size: 0.85rem;
+    letter-spacing: 0.05em;
+  }
+}
+
+@media (prefers-contrast: high) {
+  .star-shape {
+    border-color: rgba(255, 255, 255, 0.6);
+    background: rgba(255, 255, 255, 0.1);
+  }
+  
+  .star-button-text {
+    color: rgba(255, 255, 255, 0.9);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .star-button,
+  .star-shape,
+  .star-shape::before,
+  .star-shape::after,
+  .star-button-text {
+    animation: none;
+    transition-duration: 0.1s;
+  }
+  
+  .star-button:hover .star-shape::before {
+    transform: translate(-50%, -50%) scale(1.1);
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  .star-shape {
+    background: linear-gradient(135deg, 
+      rgba(255, 255, 255, 0.08) 0%,
+      rgba(255, 255, 255, 0.04) 50%,
+      rgba(255, 255, 255, 0.01) 100%
+    );
+  }
+}
+
+/* Loading state for better UX */
+.star-button.loading .star-shape::before {
+  animation: rotate 1s linear infinite;
+}
+
+.star-button.loading .star-button-text {
+  animation: launched-text 1s ease-in-out infinite;
+}
