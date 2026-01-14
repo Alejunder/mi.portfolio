@@ -6,9 +6,8 @@
 import { useTranslation } from 'react-i18next';
 import { useEffect } from 'react';
 import { languageStore } from '../../stores/languageStore';
-import { createImmersiveMode } from '../../modules/immersiveModeLogic';
-
-const immersiveMode = createImmersiveMode();
+import audioAle from '../../assets/audioale.mp3';
+import audioMorgan from '../../assets/audionmorgan.mp3';
 
 export default function SceneOverlay({ onClose }) {
   const { t } = useTranslation();
@@ -16,9 +15,19 @@ export default function SceneOverlay({ onClose }) {
   useEffect(() => {
     // Reproducir audio de bienvenida después de que terminen las instrucciones (15s)
     const audioTimer = setTimeout(() => {
-      const currentLanguage = languageStore.getLanguage();
-      immersiveMode.playWelcomeAudio(currentLanguage);
-    }, 11000); // 11 segundos, igual que la animación instructionsFadeInOut
+      try {
+        const currentLanguage = languageStore.getLanguage();
+        const audioFile = currentLanguage === 'es' ? audioAle : audioMorgan;
+        
+        const audio = new Audio(audioFile);
+        audio.volume = 0.7;
+        audio.play().catch((err) => {
+          console.log('Audio playback prevented:', err);
+        });
+      } catch (error) {
+        console.log('Error playing welcome audio:', error);
+      }
+    }, 15000); // 15 segundos, cuando termina la animación instructionsFadeInOut
 
     return () => clearTimeout(audioTimer);
   }, []);

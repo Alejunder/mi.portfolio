@@ -16,7 +16,7 @@ export const projectsData = [
   },
   {
     key: "project3",
-    link: "https://mood-beats-six.vercel.app/",
+    link: "https://mood-beats-hub.vercel.app/",
     accent: "#9a031e",
   },
 ];
