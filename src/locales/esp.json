@@ -47,8 +47,8 @@
       "description": "Proyecto para una empresa de arquitectura."
     },
     "project2": {
-      "title": "Plantilla de una tienda de productos",
-      "description": "Sistema fullstack de una tienda donde puedes crear, actualizar y eliminar productos."
+      "title": "Generador de miniaturas con IA",
+      "description": "Una aplicación que utiliza inteligencia artificial para generar miniaturas personalizadas para videos de YouTube, optimizando la atracción visual y aumentando las tasas de clics."
     },
     "project3": {
       "title": "Moodbeatshub",

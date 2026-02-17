@@ -49,8 +49,8 @@
       "description": "Project for an architecture firm."
     },
     "project2": {
-      "title": "Product store template",
-      "description": "Full-stack system for a shop where you can create, update, and delete products."
+      "title": "AI Thumbnail Generator",
+      "description": "An application that uses artificial intelligence to generate custom thumbnails for YouTube videos, optimizing visual appeal and increasing click-through rates."
     },
     "project3": {
       "title": "Moodbeatshub",

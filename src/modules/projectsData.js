@@ -11,13 +11,13 @@ export const projectsData = [
   },
   {
     key: "project2",
-    link: "https://product-store-template.vercel.app/",
-    accent: "#0eb508",
+    link: "https://copilot4yt.vercel.app/",
+    accent: "#9a031e",
   },
   {
     key: "project3",
     link: "https://mood-beats-hub.vercel.app/",
-    accent: "#9a031e",
+    accent: "#0b5f97",
   },
 ];
 
