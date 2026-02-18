@@ -3,49 +3,44 @@ import { motion, AnimatePresence } from "framer-motion";
 import { useTranslation } from 'react-i18next';
 import { useFadeOut } from "../context/FadeOutContext"; 
 import FadeWarpButton from "../components/FadeWarpButton";
+import { getCertifications } from "../services/api";
 import "../pages/styles/certificationsGallery.css";
 
-import postgresImg from "/certificationsjpg/diploma-postgresql.jpg";
-import backendImg from "/certificationsjpg/diploma-backend.jpg";
-import nodeImg from "/certificationsjpg/diploma-nodejs.jpg";
-import backendnodeImg from "/certificationsjpg/diploma-backend-nodejs.jpg";
-import promptImg from "/certificationsjpg/diploma-prompt-engineering.jpg";  
-
-const certifications = [
-  {
-    title: "PostgreSQL",
-    img: postgresImg,
-    link: "https://platzi.com/p/alecamdev/curso/12074-postgresql/diploma/detalle/",
-  },
-  {
-    title: "Backend",
-    img: backendImg,
-    link: "https://platzi.com/p/alecamdev/curso/4656-backend/diploma/detalle/",
-  },
-  {
-    title: "Node.JS",
-    img: nodeImg,
-    link: "https://platzi.com/p/alecamdev/curso/11982-nodejs/diploma/detalle/",
-  },
-  {
-    title: "Api REST + Express.JS",
-    img: backendnodeImg,
-    link: "https://platzi.com/p/alecamdev/curso/2485-backend-nodejs/diploma/detalle/",
-  },
-  {
-    title: "Prompt Engineering",
-    img: promptImg,
-    link: "https://platzi.com/p/alecamdev/curso/12001-prompt-engineering/diploma/detalle/",
-  },
-];
-
 const CertificacionesPage = () => {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
   const { controls } = useFadeOut(); 
+  const [certifications, setCertifications] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
   const [activeIndex, setActiveIndex] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [modalImg, setModalImg] = useState(null);
   const [isClosing, setIsClosing] = useState(false);
+
+  const currentLanguage = i18n.language || 'en';
+  
+  // Fetch certifications from API
+  useEffect(() => {
+    const fetchCertifications = async () => {
+      try {
+        setLoading(true);
+        const response = await getCertifications();
+        
+        if (response.success && response.data) {
+          setCertifications(response.data);
+        } else {
+          setError(response.error || 'Failed to load certifications');
+        }
+      } catch (err) {
+        setError('Failed to load certifications');
+        console.error('Error fetching certifications:', err);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchCertifications();
+  }, []);
   
   // Scroll to the top when the component mounts
   useEffect(() => {
@@ -79,66 +74,92 @@ const CertificacionesPage = () => {
     >
       <h2 className="gallery-title">{t('certifications.title')}</h2>
 
-      <div className="cert-list">
-        {certifications.map((cert, index) => (
-          <button
-            key={index}
-            className={`cert-title-btn ${
-              activeIndex === index ? "active" : ""
-            }`}
-            onClick={() => handleClick(index)}
-          >
-            {cert.title}
-          </button>
-        ))}
-      </div>
+      {loading ? (
+        <div style={{ textAlign: 'center', padding: '2rem', color: '#fff' }}>
+          Loading certifications...
+        </div>
+      ) : error ? (
+        <div style={{ textAlign: 'center', padding: '2rem', color: '#ff6b6b' }}>
+          {error}
+        </div>
+      ) : certifications.length === 0 ? (
+        <div style={{ textAlign: 'center', padding: '2rem', color: '#fff' }}>
+          No certifications available
+        </div>
+      ) : (
+        <>
+          <div className="cert-list">
+            {certifications.map((cert, index) => {
+              const certTitle = cert.title?.[currentLanguage] || cert.title?.en || 'Certification';
+              
+              return (
+                <button
+                  key={cert.id || index}
+                  className={`cert-title-btn ${
+                    activeIndex === index ? "active" : ""
+                  }`}
+                  onClick={() => handleClick(index)}
+                >
+                  {certTitle}
+                </button>
+              );
+            })}
+          </div>
 
-      <div className="cert-display">
-        <AnimatePresence mode="wait">
-          {activeIndex !== null && (
-            <motion.div
-              key={activeIndex}
-              className="cert-preview"
-              initial={{
-                opacity: 0,
-                y: 80,
-                scale: 0.8,
-                rotateZ: -15,
-                perspective: 1000,
-              }}
-              animate={{
-                opacity: 1,
-                y: 0,
-                scale: 1,
-                rotateZ: 0,
-                transition: { duration: 0.8, ease: [0.22, 1, 0.36, 1] },
-              }}
-              exit={{
-                opacity: 0,
-                y: 80,
-                scale: 0.8,
-                rotateZ: 15,
-                transition: { duration: 0.5, ease: [0.55, 0.085, 0.68, 0.53] },
-              }}
-            >
-              <img
-                src={certifications[activeIndex].img}
-                alt={certifications[activeIndex].title}
-                className="cert-image"
-                onClick={() => openModal(certifications[activeIndex].img)}
-              />
-              <motion.a
-                href={certifications[activeIndex].link}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="btn btn-2 caption-button"
-              >
-                <p className="caption">{certifications[activeIndex].title}</p>
-              </motion.a>
-            </motion.div>
-          )}
-        </AnimatePresence>
-      </div>
+          <div className="cert-display">
+            <AnimatePresence mode="wait">
+              {activeIndex !== null && (
+                <motion.div
+                  key={activeIndex}
+                  className="cert-preview"
+                  initial={{
+                    opacity: 0,
+                    y: 80,
+                    scale: 0.8,
+                    rotateZ: -15,
+                    perspective: 1000,
+                  }}
+                  animate={{
+                    opacity: 1,
+                    y: 0,
+                    scale: 1,
+                    rotateZ: 0,
+                    transition: { duration: 0.8, ease: [0.22, 1, 0.36, 1] },
+                  }}
+                  exit={{
+                    opacity: 0,
+                    y: 80,
+                    scale: 0.8,
+                    rotateZ: 15,
+                    transition: { duration: 0.5, ease: [0.55, 0.085, 0.68, 0.53] },
+                  }}
+                >
+                  <img
+                    src={certifications[activeIndex].imageUrl}
+                    alt={certifications[activeIndex].title?.[currentLanguage] || certifications[activeIndex].title?.en}
+                    className="cert-image"
+                    onClick={() => openModal(certifications[activeIndex].imageUrl)}
+                  />
+                  <motion.a
+                    href={certifications[activeIndex].credentialUrl || "#"}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="btn btn-2 caption-button"
+                    style={{
+                      pointerEvents: certifications[activeIndex].credentialUrl ? 'auto' : 'none',
+                      opacity: certifications[activeIndex].credentialUrl ? 1 : 0.5,
+                    }}
+                  >
+                    <p className="caption">
+                      {certifications[activeIndex].title?.[currentLanguage] || certifications[activeIndex].title?.en}
+                    </p>
+                  </motion.a>
+                </motion.div>
+              )}
+            </AnimatePresence>
+          </div>
+        </>
+      )}
 
       {isModalOpen && (
         <AnimatePresence>

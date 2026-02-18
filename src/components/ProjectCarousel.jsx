@@ -34,12 +34,14 @@ const Navigation = ({ onPrevious, onNext }) => (
 );
 
 const ProjectCarousel = ({ projects }) => {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
   const [currentIndex, setCurrentIndex] = useState(0);
   const carouselRef = useRef(null);
   const cardRefs = useRef({});
   const [isHovered, setIsHovered] = useState(null);
   const [isMobile, setIsMobile] = useState(false);
+
+  const currentLanguage = i18n.language || 'en';
 
   // Detectar móvil en el primer render y al cambiar tamaño
   useEffect(() => {
@@ -93,17 +95,21 @@ const ProjectCarousel = ({ projects }) => {
               currentIndex,
               projects.length
             );
-            const isHiddenButton = project.key === "project1";
+            const hasLink = project.liveUrl || project.githubUrl;
+            const projectLink = project.liveUrl || project.githubUrl;
+            const projectTitle = project.title?.[currentLanguage] || project.title?.en || '';
+            const projectDescription = project.description?.[currentLanguage] || project.description?.en || '';
+            const accentColor = project.accentColor || project.accent || '#0ff';
 
             return (
               <div
-                key={index}
+                key={project.id || index}
                 ref={(el) => (cardRefs.current[index] = el)}
                 className={`project-card-alt carousel-card ${
                   isActive ? "active" : ""
                 } ${isVisible ? "visible" : ""}`}
                 style={{
-                  borderLeft: `4px solid ${project.accent}`,
+                  borderLeft: `4px solid ${accentColor}`,
                   transform: getCardTransform(
                     index,
                     currentIndex,
@@ -115,25 +121,25 @@ const ProjectCarousel = ({ projects }) => {
                 }}
               >
                 <div className="project-content">
-                  <h3 style={{ color: project.accent }}>
-                    {t(`projects.${project.key}.title`)}
+                  <h3 style={{ color: accentColor }}>
+                    {projectTitle}
                   </h3>
                   <div className="carousel-project-description">
-                    <p>{t(`projects.${project.key}.description`)}</p>
+                    <p>{projectDescription}</p>
                   </div>
                   <motion.a
-                    href={project.link || "#"}
+                    href={projectLink || "#"}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="project-btn-futuristic"
                     onMouseEnter={() => setIsHovered(index)}
                     onMouseLeave={() => setIsHovered(null)}
-                    initial={{ opacity: isHiddenButton ? 0 : 1 }}
-                    animate={{ opacity: isHiddenButton ? 0 : 1 }}
+                    initial={{ opacity: hasLink ? 1 : 0 }}
+                    animate={{ opacity: hasLink ? 1 : 0 }}
                     style={{
-                      pointerEvents: isHiddenButton ? "none" : "auto",
-                      cursor: isHiddenButton ? "default" : "pointer",
-                      visibility: isHiddenButton ? "hidden" : "visible",
+                      pointerEvents: hasLink ? "auto" : "none",
+                      cursor: hasLink ? "pointer" : "default",
+                      visibility: hasLink ? "visible" : "hidden",
                     }}
                   >
                     <span>

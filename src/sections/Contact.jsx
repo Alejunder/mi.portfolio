@@ -1,37 +1,59 @@
-import { useState, useRef } from "react";
+import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useTranslation } from 'react-i18next';
 import { useFadeOut } from "../context/FadeOutContext";
 import TiltCard from "../components/TiltCard";
-import { sendEmail } from "../facades/emailFacade";
-import {
-  handleFieldChange,
-  handleSubmitSuccess,
-  handleSubmitError,
-} from "../modules/contactLogic";
+import { sendContactMessage } from "../services/api";
 import "./styles/Contact.css";
 
 export default function Contact() {
   const { t } = useTranslation();
   const { controls } = useFadeOut();
-  const formRef = useRef();
   const [form, setForm] = useState({ name: "", email: "", message: "" });
   const [success, setSuccess] = useState(false);
   const [error, setError] = useState(false);
+  const [loading, setLoading] = useState(false);
 
   const handleChange = (e) => {
-    handleFieldChange(e, form, setForm);
+    const { name, value } = e.target;
+    setForm((prev) => ({ ...prev, [name]: value }));
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     
-    const result = await sendEmail(formRef.current);
-    
-    if (result.success) {
-      handleSubmitSuccess(setSuccess, setError, setForm);
-    } else {
-      handleSubmitError(setError, setSuccess);
+    try {
+      setLoading(true);
+      setError(false);
+      setSuccess(false);
+
+      const response = await sendContactMessage({
+        name: form.name,
+        email: form.email,
+        message: form.message,
+      });
+      
+      if (response.success) {
+        setSuccess(true);
+        setForm({ name: "", email: "", message: "" });
+        
+        setTimeout(() => {
+          setSuccess(false);
+        }, 5000);
+      } else {
+        setError(true);
+        setTimeout(() => {
+          setError(false);
+        }, 5000);
+      }
+    } catch (err) {
+      console.error('Contact form error:', err);
+      setError(true);
+      setTimeout(() => {
+        setError(false);
+      }, 5000);
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -47,7 +69,7 @@ export default function Contact() {
 
         <div className="contact-content">
           <div className="contact-form-wrapper">
-            <form className="contact-form" ref={formRef} onSubmit={handleSubmit}>
+            <form className="contact-form" onSubmit={handleSubmit}>
               <input
                 type="text"
                 name="name"
@@ -55,6 +77,7 @@ export default function Contact() {
                 value={form.name}
                 onChange={handleChange}
                 required
+                disabled={loading}
               />
               <input
                 type="email"
@@ -63,6 +86,7 @@ export default function Contact() {
                 value={form.email}
                 onChange={handleChange}
                 required
+                disabled={loading}
               />
               <textarea
                 name="message"
@@ -71,8 +95,11 @@ export default function Contact() {
                 value={form.message}
                 onChange={handleChange}
                 required
+                disabled={loading}
               />
-              <button type="submit">{t('contact.button')}</button>
+              <button type="submit" disabled={loading}>
+                {loading ? 'Sending...' : t('contact.button')}
+              </button>
             </form>
 
             <AnimatePresence>
@@ -85,7 +112,7 @@ export default function Contact() {
                   exit={{ opacity: 0, y: -10 }}
                   transition={{ duration: 0.5 }}
                 >
-                  {t('success')}
+                  {t('contact.success')}
                 </motion.p>
               )}
 
@@ -98,7 +125,7 @@ export default function Contact() {
                   exit={{ opacity: 0, y: -10 }}
                   transition={{ duration: 0.5 }}
                 >
-                  {t('error')}
+                  {t('contact.error')}
                 </motion.p>
               )}
             </AnimatePresence>

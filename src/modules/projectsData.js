@@ -5,17 +5,17 @@
 
 export const projectsData = [
   {
-    key: "project1",
+    key: "Architecture firm",
     // link: "", // No disponible aún
     accent: "#0ff",
   },
   {
-    key: "project2",
+    key: "copilot4yt",
     link: "https://copilot4yt.vercel.app/",
     accent: "#9a031e",
   },
   {
-    key: "project3",
+    key: "mood-beats-hub",
     link: "https://mood-beats-hub.vercel.app/",
     accent: "#0b5f97",
   },
