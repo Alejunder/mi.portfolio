@@ -14,8 +14,14 @@ const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:3000';
 async function apiFetch(endpoint, options) {
   try {
     const response = await fetch(`${API_URL}${endpoint}`, {
+      // Force fresh data from server, bypass browser cache
+      cache: 'no-store',
       headers: {
         'Content-Type': 'application/json',
+        // Additional cache-busting headers for older browsers
+        'Cache-Control': 'no-cache, no-store, must-revalidate',
+        'Pragma': 'no-cache',
+        'Expires': '0',
         ...options?.headers,
       },
       ...options,
