@@ -5,6 +5,12 @@
 
 const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:3000';
 
+// Debug: Log API URL on initialization (only once)
+if (typeof window !== 'undefined') {
+  console.log('[API Config] Using API URL:', API_URL);
+  console.log('[API Config] Environment:', import.meta.env.MODE);
+}
+
 /**
  * Generic fetch wrapper with error handling
  * @param {string} endpoint - API endpoint path

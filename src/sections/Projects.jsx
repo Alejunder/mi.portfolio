@@ -17,14 +17,19 @@ export default function Projects() {
         setLoading(true);
         const response = await getProjects({ featured: true });
         
+        console.log('[Projects] API Response:', response);
+        
         if (response.success && response.data) {
+          console.log('[Projects] Data loaded successfully:', response.data.length, 'projects');
           setProjects(response.data);
         } else {
-          setError(response.error || 'Failed to load projects');
+          const errorMsg = response.error || 'Failed to load projects';
+          console.error('[Projects] API Error:', errorMsg);
+          setError(errorMsg);
         }
       } catch (err) {
-        setError('Failed to load projects');
-        console.error('Error fetching projects:', err);
+        console.error('[Projects] Fetch Error:', err);
+        setError('Failed to load projects: ' + err.message);
       } finally {
         setLoading(false);
       }

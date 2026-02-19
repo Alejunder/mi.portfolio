@@ -17,14 +17,19 @@ export default function About() {
         setLoading(true);
         const response = await getAbout();
         
+        console.log('[About] API Response:', response);
+        
         if (response.success && response.data) {
+          console.log('[About] Data loaded successfully:', response.data);
           setAboutData(response.data);
         } else {
-          setError(response.error || 'Failed to load about data');
+          const errorMsg = response.error || 'Failed to load about data';
+          console.error('[About] API Error:', errorMsg);
+          setError(errorMsg);
         }
       } catch (err) {
-        setError('Failed to load about data');
-        console.error('Error fetching about data:', err);
+        console.error('[About] Fetch Error:', err);
+        setError('Failed to load about data: ' + err.message);
       } finally {
         setLoading(false);
       }
