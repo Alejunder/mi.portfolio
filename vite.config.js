@@ -13,7 +13,7 @@ export default defineConfig(({ mode }) => {
     plugins: [react()],
     define: {
       // Make env variables available at build time
-      'import.meta.env.VITE_API_URL': JSON.stringify(env.VITE_API_URL || 'http://localhost:3000'),
+      'import.meta.env.VITE_API_URL': JSON.stringify(env.VITE_API_URL || (mode === 'production' ? 'https://admin.alecam.dev' : 'http://localhost:3000')),
     },
   };
 })
