@@ -65,25 +65,17 @@
   cursor: pointer;
 }
 
-.btn-2 {
+.caption-button {
   margin-top: 20px;
   position: relative;
-  letter-spacing: 1;
   text-align: center;
   color: white;
   display: inline-block;
   padding: 12px 24px;
-  transition: letter-spacing 0.3s ease-in-out;
-  font-size: 1.2rem;
 }
 
-.btn-2:hover,
-.btn-2:active {
-  letter-spacing: 5px;
-}
-
-.btn-2::before,
-.btn-2::after {
+.caption-button::before,
+.caption-button::after {
   content: "";
   position: absolute;
   left: 50%;
@@ -94,17 +86,25 @@
   transition: width 350ms ease-in-out;
 }
 
-.btn-2::before {
+.caption-button::before {
   top: -8px;
 }
 
-.btn-2::after {
+.caption-button::after {
   bottom: 8px;
 }
 
-.btn-2:hover::before,
-.btn-2:hover::after {
-  width: 70%;
+.caption {
+  font-size: 1.2rem;
+  letter-spacing: 1px;
+}
+
+.cert-issuer {
+  font-size: 0.9rem;
+  color: #00f0ff;
+  margin-top: 0.4rem;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
 }
 
 .modal-overlay {

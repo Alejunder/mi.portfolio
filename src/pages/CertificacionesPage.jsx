@@ -140,20 +140,16 @@ const CertificacionesPage = () => {
                     className="cert-image"
                     onClick={() => openModal(certifications[activeIndex].imageUrl)}
                   />
-                  <motion.a
-                    href={certifications[activeIndex].credentialUrl || "#"}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="btn btn-2 caption-button"
-                    style={{
-                      pointerEvents: certifications[activeIndex].credentialUrl ? 'auto' : 'none',
-                      opacity: certifications[activeIndex].credentialUrl ? 1 : 0.5,
-                    }}
-                  >
+                  <div className="caption-button">
                     <p className="caption">
                       {certifications[activeIndex].title?.[currentLanguage] || certifications[activeIndex].title?.en}
                     </p>
-                  </motion.a>
+                    {certifications[activeIndex].issuer && (
+                      <p className="cert-issuer">
+                        {certifications[activeIndex].issuer?.[currentLanguage] || certifications[activeIndex].issuer?.en}
+                      </p>
+                    )}
+                  </div>
                 </motion.div>
               )}
             </AnimatePresence>
